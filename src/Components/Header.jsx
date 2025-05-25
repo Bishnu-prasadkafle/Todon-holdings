@@ -245,7 +245,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className='md:hidden bg-white border-t border-gray-200 shadow-md px-4 py-2 space-y-2'>
+          <div className='md:hidden bg-white border-t border-gray-300 shadow-md px-4 py-2 space-y-2'>
             <Link
               to='/'
               className={`block hover:bg-gray-100 px-2 py-1 rounded ${linkClass(
