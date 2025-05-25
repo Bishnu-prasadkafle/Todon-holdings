@@ -2,11 +2,11 @@ import { PlayCircle } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className='relative max-h-screen flex items-center justify-start overflow-hidden pt-32'>
+    <section className='relative  flex items-center justify-start overflow-hidden pt-32'>
       {/* Background Image */}
 
       <div
-        className='absolute h-[700px] inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-105'
+        className='absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-105'
         style={{
           backgroundImage: "url('/image3.png')",
         }}>
@@ -51,12 +51,6 @@ const HeroSection = () => {
               </span>
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Down Indicator */}
-      <div className='absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10 transition-all duration-300 hover:scale-110'>
-        <div className='w-6 h-10 border-2 border-white/50 rounded-full flex justify-center hover:border-blue-300/70 transition-all duration-300'>
           <div className='w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse hover:bg-blue-300/70 transition-all duration-300'></div>
         </div>
       </div>

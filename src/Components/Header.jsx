@@ -199,7 +199,7 @@ const Header = () => {
       </div>
 
       {/* 🔷 Main Navigation */}
-      <div className='sticky top-0 z-50 bg-white'>
+      <div className='sticky top-0 z-50 bg-white bg-gradient-to-br from-blue-400/20 to-purple-300/20'>
         <div className='max-w-7xl mx-auto px-4 py-3 flex items-center justify-between'>
           <h1 className='text-2xl sm:text-3xl font-bold text-gray-900'>
             Tondon Holdings
