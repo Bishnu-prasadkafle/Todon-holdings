@@ -6,7 +6,7 @@ const HeroSection = () => {
       {/* Background Image */}
 
       <div
-        className='absolute h-[600px] inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-105'
+        className='absolute h-[700px] inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-105'
         style={{
           backgroundImage: "url('/image3.png')",
         }}>

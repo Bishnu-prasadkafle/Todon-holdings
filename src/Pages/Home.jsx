@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "../Components/Herosection";
+import HeroSection from "../Components/HeroSection";
 import Analytics from "../Components/Analytics";
 import WhyChooseUs from "../Components/WhyChooseUs";
 import TestimonialsStats from "../Components/TestimonialStats";
