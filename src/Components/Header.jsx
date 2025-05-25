@@ -168,7 +168,7 @@ const Header = () => {
     <>
       {/* 🔷 Top Info Bar */}
       <div className='bg-white shadow-md'>
-        <div className='bg-blue-600 text-white text-sm py-2 px-4'>
+        <div className='bg-blue-900 text-white text-sm py-2 px-4'>
           <div className='max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2'>
             <div className='flex items-center gap-6'>
               <div className='flex items-center gap-2'>
@@ -201,8 +201,12 @@ const Header = () => {
       {/* 🔷 Main Navigation */}
       <div className='sticky top-0 z-50 bg-white bg-gradient-to-br from-blue-400/20 to-purple-300/20'>
         <div className='max-w-7xl mx-auto px-4 py-3 flex items-center justify-between'>
-          <h1 className='text-2xl sm:text-3xl font-bold text-gray-900'>
+          {/* <h1 className='text-2xl sm:text-3xl font-stretch-semi-condensed text-gray-900'>
             Tondon Holdings
+          </h1> */}
+          <h1 className='text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 font-sans'>
+            <span className='text-purple-600'>Tondon</span>{" "}
+            <span className='text-blue-500'>Holdings</span>
           </h1>
 
           <button
