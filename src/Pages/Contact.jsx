@@ -490,9 +490,9 @@ const Contact = () => {
   ];
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900'>
+    <div className='min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-x-hidden'>
       {/* Hero Section */}
-      <section className='relative pt-32 pb-20 overflow-hidden'>
+      <section className='relative pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 '>
         <div className='absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20'></div>
         <div className='absolute inset-0'>
           <div className='absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse'></div>
