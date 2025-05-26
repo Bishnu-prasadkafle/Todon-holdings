@@ -300,6 +300,8 @@
 // export default Header;
 
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+
 import {
   Mail,
   Phone,
@@ -320,14 +322,12 @@ import {
   Brain,
   ChevronDown,
 } from "lucide-react";
-// Note: Replace demo Link component with React Router Link in your project
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
-  // For demo purposes - replace with useLocation hook in your project
-  const location = { pathname: "/" };
+  const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
   const linkClass = (path) =>
@@ -344,57 +344,43 @@ const Header = () => {
         { name: "Logistics", icon: Truck, path: "/services/logistics" },
       ],
     },
-    {
-      category: "Marketing & Analysis",
-      items: [
-        {
-          name: "Digital Marketing",
-          icon: TrendingUp,
-          path: "/services/digital-marketing",
-        },
-        {
-          name: "Business Analysis",
-          icon: BarChart3,
-          path: "/services/business-analysis",
-        },
-        {
-          name: "Market Research",
-          icon: Search,
-          path: "/services/market-research",
-        },
-      ],
-    },
-    {
-      category: "Technology Solutions",
-      items: [
-        {
-          name: "Web Development",
-          icon: Code,
-          path: "/services/web-development",
-        },
-        {
-          name: "Cloud Services",
-          icon: Cloud,
-          path: "/services/cloud-services",
-        },
-        { name: "AI & ML Solutions", icon: Brain, path: "/services/ai-ml" },
-      ],
-    },
+    // {
+    //   category: "Marketing & Analysis",
+    //   items: [
+    //     {
+    //       name: "Digital Marketing",
+    //       icon: TrendingUp,
+    //       path: "/services/digital-marketing",
+    //     },
+    //     {
+    //       name: "Business Analysis",
+    //       icon: BarChart3,
+    //       path: "/services/business-analysis",
+    //     },
+    //     {
+    //       name: "Market Research",
+    //       icon: Search,
+    //       path: "/services/market-research",
+    //     },
+    //   ],
+    // },
+    // {
+    //   category: "Technology Solutions",
+    //   items: [
+    //     {
+    //       name: "Web Development",
+    //       icon: Code,
+    //       path: "/services/web-development",
+    //     },
+    //     {
+    //       name: "Cloud Services",
+    //       icon: Cloud,
+    //       path: "/services/cloud-services",
+    //     },
+    //     { name: "AI & ML Solutions", icon: Brain, path: "/services/ai-ml" },
+    //   ],
+    // },
   ];
-
-  // Demo Link component - replace with React Router Link in your project
-  const Link = ({ to, children, className, onClick }) => (
-    <a
-      href={to}
-      className={className}
-      onClick={(e) => {
-        e.preventDefault();
-        console.log(`Navigate to: ${to}`);
-        if (onClick) onClick();
-      }}>
-      {children}
-    </a>
-  );
 
   // Enhanced Services Dropdown Component
   const ServicesDropdown = ({ isMobile = false }) => {
@@ -529,10 +515,12 @@ const Header = () => {
       {/* 🔷 Main Navigation */}
       <div className='sticky top-0 z-50 bg-white bg-gradient-to-br from-blue-400/20 to-purple-300/20'>
         <div className='max-w-7xl mx-auto px-4 py-3 flex items-center justify-between'>
-          <h1 className='text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 font-sans'>
+          <Link
+            to='/'
+            className='text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 font-sans hover:opacity-80 transition-opacity duration-200'>
             <span className='text-purple-600'>Tondon</span>{" "}
             <span className='text-blue-500'>Holdings</span>
-          </h1>
+          </Link>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -590,7 +578,7 @@ const Header = () => {
             </div>
             {/* Mobile Overlay */}
             <div
-              className='fixed inset-0 bg-black bg-opacity-20 z-40'
+              className='fixed inset-0  bg-opacity-20 z-40'
               onClick={() => setMenuOpen(false)}
             />
           </>
