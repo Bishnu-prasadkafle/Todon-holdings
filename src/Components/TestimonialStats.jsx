@@ -1,206 +1,19 @@
-// import { Star, Quote, TrendingUp, Users, Building, Award } from "lucide-react";
-
-// const TestimonialsStats = () => {
-//   const testimonials = [
-//     {
-//       id: 1,
-//       name: "Sarah Johnson",
-//       position: "CEO",
-//       company: "TechCorp Solutions",
-//       image:
-//         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-//       content:
-//         "Tondon Holdings transformed our business operations completely. Their innovative solutions increased our efficiency by 300% and helped us scale globally.",
-//       rating: 5,
-//     },
-//     {
-//       id: 2,
-//       name: "Michael Chen",
-//       position: "CTO",
-//       company: "DataFlow Inc",
-//       image:
-//         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-//       content:
-//         "The level of expertise and support provided by Tondon Holdings is unmatched. They delivered results beyond our expectations and continue to be our trusted partner.",
-//       rating: 5,
-//     },
-//     {
-//       id: 3,
-//       name: "Emily Rodriguez",
-//       position: "Operations Director",
-//       company: "Global Ventures",
-//       image:
-//         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-//       content:
-//         "Working with Tondon Holdings was a game-changer. Their strategic approach and cutting-edge technology helped us achieve our goals faster than we imagined.",
-//       rating: 5,
-//     },
-//   ];
-
-//   const stats = [
-//     {
-//       icon: Users,
-//       number: "10,000+",
-//       label: "Happy Clients",
-//       description: "Businesses worldwide trust our solutions",
-//     },
-//     {
-//       icon: TrendingUp,
-//       number: "300%",
-//       label: "Average Growth",
-//       description: "Increase in client business efficiency",
-//     },
-//     {
-//       icon: Building,
-//       number: "50+",
-//       label: "Countries",
-//       description: "Global presence and partnerships",
-//     },
-//     {
-//       icon: Award,
-//       number: "99.9%",
-//       label: "Success Rate",
-//       description: "Project completion and satisfaction",
-//     },
-//   ];
-
-//   const renderStars = (rating) => {
-//     return Array.from({ length: 5 }, (_, index) => (
-//       <Star
-//         key={index}
-//         size={20}
-//         className={`${
-//           index < rating ? "text-yellow-400 fill-current" : "text-gray-300"
-//         } transition-all duration-300`}
-//       />
-//     ));
-//   };
-
-//   return (
-//     <section className='py-20 px-4 bg-white'>
-//       <div className='max-w-7xl mx-auto'>
-//         {/* Stats Section */}
-//         <div className='mb-20'>
-//           <div className='text-center mb-12'>
-//             <h2 className='text-4xl lg:text-5xl font-bold text-gray-900 mb-4 transform transition-all duration-500 hover:scale-105'>
-//               Our Impact in Numbers
-//             </h2>
-//             <p className='text-xl text-gray-600 max-w-2xl mx-auto'>
-//               Proven results that speak for themselves
-//             </p>
-//           </div>
-
-//           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-//             {stats.map((stat, index) => {
-//               const IconComponent = stat.icon;
-//               return (
-//                 <div
-//                   key={index}
-//                   className='group text-center bg-gray-50 rounded-2xl p-8 transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:bg-blue-50 hover:shadow-xl'>
-//                   <div className='mb-4'>
-//                     <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto group-hover:bg-blue-500 transition-all duration-500 transform group-hover:scale-110'>
-//                       <IconComponent
-//                         size={28}
-//                         className='text-blue-600 group-hover:text-white transition-all duration-500'
-//                       />
-//                     </div>
-//                   </div>
-//                   <div className='text-4xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-all duration-300'>
-//                     {stat.number}
-//                   </div>
-//                   <div className='text-xl font-semibold text-gray-800 mb-2'>
-//                     {stat.label}
-//                   </div>
-//                   <div className='text-gray-600 group-hover:text-gray-700 transition-all duration-300'>
-//                     {stat.description}
-//                   </div>
-//                 </div>
-//               );
-//             })}
-//           </div>
-//         </div>
-
-//         {/* Testimonials Section */}
-//         <div>
-//           <div className='text-center mb-12'>
-//             <h2 className='text-4xl lg:text-5xl font-bold text-gray-900 mb-4 transform transition-all duration-500 hover:scale-105'>
-//               What Our Clients Say
-//             </h2>
-//             <p className='text-xl text-gray-600 max-w-2xl mx-auto'>
-//               Don't just take our word for it - hear from our satisfied clients
-//             </p>
-//           </div>
-
-//           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-//             {testimonials.map((testimonial) => (
-//               <div
-//                 key={testimonial.id}
-//                 className='group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 relative overflow-hidden'>
-//                 {/* Quote Icon */}
-//                 <div className='absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-all duration-500'>
-//                   <Quote size={40} className='text-blue-500' />
-//                 </div>
-
-//                 {/* Rating */}
-//                 <div className='flex items-center mb-4'>
-//                   {renderStars(testimonial.rating)}
-//                 </div>
-
-//                 {/* Content */}
-//                 <p className='text-gray-700 mb-6 leading-relaxed group-hover:text-gray-800 transition-all duration-300 italic'>
-//                   "{testimonial.content}"
-//                 </p>
-
-//                 {/* Client Info */}
-//                 <div className='flex items-center'>
-//                   <img
-//                     src={testimonial.image}
-//                     alt={testimonial.name}
-//                     className='w-12 h-12 rounded-full object-cover mr-4 group-hover:scale-110 transition-all duration-500'
-//                   />
-//                   <div>
-//                     <div className='font-semibold text-gray-900 group-hover:text-blue-600 transition-all duration-300'>
-//                       {testimonial.name}
-//                     </div>
-//                     <div className='text-gray-600 text-sm'>
-//                       {testimonial.position}, {testimonial.company}
-//                     </div>
-//                   </div>
-//                 </div>
-
-//                 {/* Hover accent */}
-//                 <div className='absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left'></div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Bottom CTA */}
-//         <div className='text-center mt-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-white'>
-//           <h3 className='text-3xl font-bold mb-4'>
-//             Ready to Join Our Success Stories?
-//           </h3>
-//           <p className='text-blue-100 mb-8 max-w-2xl mx-auto text-lg'>
-//             Let us help you achieve the same remarkable results our clients
-//             experience every day
-//           </p>
-//           <button className='group bg-white text-blue-600 hover:bg-gray-50 px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-500 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 active:scale-95'>
-//             Start Your Success Story
-//             <span className='ml-2 transform group-hover:translate-x-1 transition-transform duration-300'>
-//               →
-//             </span>
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default TestimonialsStats;
-
 import { Star, Quote, TrendingUp, Users, Building, Award } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const TestimonialsStats = () => {
+  const [statsVisible, setStatsVisible] = useState(false);
+  const [testimonialsVisible, setTestimonialsVisible] = useState(false);
+  const [visibleStatCards, setVisibleStatCards] = useState([]);
+  const [visibleTestimonialCards, setVisibleTestimonialCards] = useState([]);
+  const [ctaVisible, setCtaVisible] = useState(false);
+
+  const statsRef = useRef(null);
+  const testimonialsRef = useRef(null);
+  const statCardRefs = useRef([]);
+  const testimonialCardRefs = useRef([]);
+  const ctaRef = useRef(null);
+
   const testimonials = [
     {
       id: 1,
@@ -264,55 +77,169 @@ const TestimonialsStats = () => {
     },
   ];
 
+  // Intersection observers for scroll animations
+  useEffect(() => {
+    const statsObserver = new IntersectionObserver(
+      ([entry]) => setStatsVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (statsRef.current) {
+      statsObserver.observe(statsRef.current);
+    }
+    return () => {
+      if (statsRef.current) statsObserver.unobserve(statsRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const testimonialsObserver = new IntersectionObserver(
+      ([entry]) => setTestimonialsVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (testimonialsRef.current) {
+      testimonialsObserver.observe(testimonialsRef.current);
+    }
+    return () => {
+      if (testimonialsRef.current)
+        testimonialsObserver.unobserve(testimonialsRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const statCardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardId = parseInt(entry.target.dataset.cardId);
+            setVisibleStatCards((prev) => [...new Set([...prev, cardId])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    statCardRefs.current.forEach((ref) => {
+      if (ref) statCardObserver.observe(ref);
+    });
+
+    return () => {
+      statCardRefs.current.forEach((ref) => {
+        if (ref) statCardObserver.unobserve(ref);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    const testimonialCardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardId = parseInt(entry.target.dataset.cardId);
+            setVisibleTestimonialCards((prev) => [
+              ...new Set([...prev, cardId]),
+            ]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    testimonialCardRefs.current.forEach((ref) => {
+      if (ref) testimonialCardObserver.observe(ref);
+    });
+
+    return () => {
+      testimonialCardRefs.current.forEach((ref) => {
+        if (ref) testimonialCardObserver.unobserve(ref);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    const ctaObserver = new IntersectionObserver(
+      ([entry]) => setCtaVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (ctaRef.current) {
+      ctaObserver.observe(ctaRef.current);
+    }
+    return () => {
+      if (ctaRef.current) ctaObserver.unobserve(ctaRef.current);
+    };
+  }, []);
+
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star
         key={index}
         size={20}
         className={`${
-          index < rating ? "text-yellow-400 fill-current" : "text-gray-500"
+          index < rating ? "text-yellow-400 fill-current" : "text-slate-500"
         } transition-all duration-300`}
       />
     ));
   };
 
   return (
-    <section className='py-20 bg-gradient-to-br from-gray-900 to-slate-900'>
-      <div className='max-w-7xl mx-auto px-6 lg:px-8'>
+    <section className='py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden'>
+      {/* Background Elements */}
+      <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] animate-pulse'></div>
+
+      <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
         {/* Stats Section */}
         <div className='mb-20'>
-          <div className='text-center mb-12'>
-            <h2 className='text-4xl lg:text-5xl font-bold text-white mb-6'>
-              Our Impact in <span className='text-blue-400'>Numbers</span>
+          <div
+            ref={statsRef}
+            className={`text-center mb-12 transition-all duration-1000 ease-out ${
+              statsVisible
+                ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
+                : "opacity-0 translate-y-10"
+            }`}>
+            <h2 className='text-4xl lg:text-5xl font-bold text-white mb-6 transform transition-all duration-700 hover:scale-105'>
+              Our Impact in{" "}
+              <span className='bg-gradient-to-r from-blue-700 to-emerald-500 bg-clip-text text-transparent hover:from-blue-500 hover:to-emerald-400 inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'>
+                Numbers
+              </span>
             </h2>
-            <p className='text-xl text-gray-300 max-w-2xl mx-auto'>
+            <p className='text-xl text-slate-200 max-w-2xl mx-auto transition-colors duration-500 ease-in-out hover:text-slate-100'>
               Proven results that speak for themselves
             </p>
-            <div className='w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto mt-6 rounded-full'></div>
+            <div className='w-24 h-1 bg-gradient-to-r from-blue-700 to-emerald-500 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32 hover:shadow-lg hover:shadow-emerald-400/30'></div>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
+              const isCardVisible = visibleStatCards.includes(index);
+
               return (
                 <div
                   key={index}
-                  className='group text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-400/30 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2'>
+                  ref={(el) => (statCardRefs.current[index] = el)}
+                  data-card-id={index}
+                  className={`group text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-400/30 transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 hover:shadow-xl hover:shadow-emerald-400/20 will-change-transform ${
+                    isCardVisible
+                      ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
+                      : "opacity-0 translate-y-10"
+                  }`}
+                  style={{
+                    transitionDelay: isCardVisible ? `${index * 150}ms` : "0ms",
+                  }}>
                   <div className='mb-4'>
-                    <div className='w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto group-hover:bg-blue-500 transition-all duration-500 transform group-hover:scale-110 border-4 border-white/20 group-hover:border-blue-400/50'>
+                    <div className='w-16 h-16 bg-gradient-to-br from-slate-700 to-slate-600 rounded-full flex items-center justify-center mx-auto group-hover:bg-gradient-to-br group-hover:from-blue-700 group-hover:to-emerald-500 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 border-4 border-white/20 group-hover:border-emerald-400/50 shadow-lg group-hover:shadow-emerald-400/25'>
                       <IconComponent
                         size={28}
-                        className='text-gray-400 group-hover:text-white transition-all duration-500'
+                        className='text-slate-400 group-hover:text-white transition-all duration-500'
                       />
                     </div>
                   </div>
-                  <div className='text-4xl font-bold text-white mb-2 group-hover:text-blue-300 transition-all duration-300'>
+                  <div className='text-4xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-all duration-500 hover:scale-105 hover:translate-y-[-2px]'>
                     {stat.number}
                   </div>
-                  <div className='text-xl font-semibold text-gray-200 mb-2'>
+                  <div className='text-xl font-semibold text-slate-200 mb-2 group-hover:text-slate-100 transition-all duration-300'>
                     {stat.label}
                   </div>
-                  <div className='text-gray-300 group-hover:text-gray-200 transition-all duration-300'>
+                  <div className='text-slate-200 group-hover:text-slate-100 transition-all duration-300'>
                     {stat.description}
                   </div>
                 </div>
@@ -323,75 +250,112 @@ const TestimonialsStats = () => {
 
         {/* Testimonials Section */}
         <div>
-          <div className='text-center mb-12'>
-            <h2 className='text-4xl lg:text-5xl font-bold text-white mb-6'>
-              What Our <span className='text-blue-400'>Clients Say</span>
+          <div
+            ref={testimonialsRef}
+            className={`text-center mb-12 transition-all duration-1000 ease-out ${
+              testimonialsVisible
+                ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
+                : "opacity-0 translate-y-10"
+            }`}>
+            <h2 className='text-4xl lg:text-5xl font-bold text-white mb-6 transform transition-all duration-700 hover:scale-105'>
+              What Our{" "}
+              <span className='bg-gradient-to-r from-blue-700 to-emerald-500 bg-clip-text text-transparent hover:from-blue-500 hover:to-emerald-400 inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'>
+                Clients Say
+              </span>
             </h2>
-            <p className='text-xl text-gray-300 max-w-2xl mx-auto'>
+            <p className='text-xl text-slate-200 max-w-2xl mx-auto transition-colors duration-500 ease-in-out hover:text-slate-100'>
               Don't just take our word for it - hear from our satisfied clients
             </p>
-            <div className='w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto mt-6 rounded-full'></div>
+            <div className='w-24 h-1 bg-gradient-to-r from-blue-700 to-emerald-500 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32 hover:shadow-lg hover:shadow-emerald-400/30'></div>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className='group bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-400/30 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 relative overflow-hidden'>
-                {/* Quote Icon */}
-                <div className='absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-all duration-500'>
-                  <Quote size={40} className='text-blue-400' />
-                </div>
+            {testimonials.map((testimonial, index) => {
+              const isCardVisible = visibleTestimonialCards.includes(
+                testimonial.id
+              );
 
-                {/* Rating */}
-                <div className='flex items-center mb-4'>
-                  {renderStars(testimonial.rating)}
-                </div>
+              return (
+                <div
+                  key={testimonial.id}
+                  ref={(el) => (testimonialCardRefs.current[index] = el)}
+                  data-card-id={testimonial.id}
+                  className={`group bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-400/30 transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 relative overflow-hidden hover:shadow-xl hover:shadow-emerald-400/20 will-change-transform ${
+                    isCardVisible
+                      ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
+                      : "opacity-0 translate-y-10"
+                  }`}
+                  style={{
+                    transitionDelay: isCardVisible ? `${index * 200}ms` : "0ms",
+                  }}>
+                  {/* Quote Icon */}
+                  <div className='absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-all duration-500'>
+                    <Quote size={40} className='text-emerald-400' />
+                  </div>
 
-                {/* Content */}
-                <p className='text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-all duration-300 italic'>
-                  "{testimonial.content}"
-                </p>
+                  {/* Rating */}
+                  <div className='flex items-center mb-4'>
+                    {renderStars(testimonial.rating)}
+                  </div>
 
-                {/* Client Info */}
-                <div className='flex items-center'>
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className='w-12 h-12 rounded-full object-cover mr-4 group-hover:scale-110 transition-all duration-500 border-2 border-white/20 group-hover:border-blue-400/50'
-                  />
-                  <div>
-                    <div className='font-semibold text-white group-hover:text-blue-300 transition-all duration-300'>
-                      {testimonial.name}
-                    </div>
-                    <div className='text-gray-400 text-sm'>
-                      {testimonial.position}, {testimonial.company}
+                  {/* Content */}
+                  <p className='text-slate-200 mb-6 leading-relaxed group-hover:text-slate-100 transition-all duration-500 italic'>
+                    "{testimonial.content}"
+                  </p>
+
+                  {/* Client Info */}
+                  <div className='flex items-center'>
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className='w-12 h-12 rounded-full object-cover mr-4 group-hover:scale-110 transition-all duration-500 border-2 border-white/20 group-hover:border-emerald-400/50 shadow-lg group-hover:shadow-emerald-400/25'
+                    />
+                    <div>
+                      <div className='font-semibold text-white group-hover:text-emerald-300 transition-all duration-500'>
+                        {testimonial.name}
+                      </div>
+                      <div className='text-slate-400 text-sm group-hover:text-slate-300 transition-all duration-300'>
+                        {testimonial.position}, {testimonial.company}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Hover accent */}
-                <div className='absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left'></div>
-              </div>
-            ))}
+                  {/* Hover accent */}
+                  <div className='absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-700 to-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left shadow-lg group-hover:shadow-emerald-400/30'></div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         {/* Bottom CTA */}
-        <div className='text-center mt-16 bg-white/5 backdrop-blur-sm rounded-2xl p-12 border border-white/10'>
-          <h3 className='text-3xl font-bold mb-4 text-white'>
+        <div
+          ref={ctaRef}
+          className={`text-center mt-16 bg-white/5 backdrop-blur-sm rounded-2xl p-12 border border-white/10 hover:border-emerald-400/20 transition-all duration-1000 hover:bg-white/10 ${
+            ctaVisible
+              ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
+              : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: ctaVisible ? "600ms" : "0ms" }}>
+          <h3 className='text-3xl font-bold mb-4 text-white transition-colors duration-500 hover:text-emerald-300'>
             Ready to Join Our Success Stories?
           </h3>
-          <p className='text-gray-300 mb-8 max-w-2xl mx-auto text-lg'>
+          <p className='text-slate-200 mb-8 max-w-2xl mx-auto text-lg transition-colors duration-500 hover:text-slate-100'>
             Let us help you achieve the same remarkable results our clients
             experience every day
           </p>
-          <button className='group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 hover:-translate-y-1 active:scale-95'>
-            Start Your Success Story
+          <button className='group relative bg-gradient-to-r from-blue-700 to-emerald-500 hover:from-blue-600 hover:to-emerald-400 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-transform duration-500 ease-in-out shadow-lg hover:shadow-emerald-400/30 transform hover:scale-110 hover:-translate-y-2 active:scale-95 border border-blue-500/30 hover:border-emerald-400/50 backdrop-blur-sm'>
+            <span className='relative z-10 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
+              Start Your Success Story
+            </span>
             <span className='ml-2 transform group-hover:translate-x-1 transition-transform duration-300'>
               →
             </span>
+            <div className='absolute inset-0 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ease-in-out transform group-hover:scale-105'></div>
           </button>
+
+          {/* Pulse Animation Line */}
+          <div className='w-1 h-3 bg-white/40 rounded-full mt-6 mx-auto animate-pulse hover:bg-emerald-400/70 transition-colors duration-300 ease-in-out'></div>
         </div>
       </div>
     </section>

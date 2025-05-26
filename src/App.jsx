@@ -10,6 +10,7 @@ import ConsultingPage from "./Pages/Servicepages/Consultingpage";
 import ITServicesPage from "./Pages/Servicepages/ITServicesPage";
 import Logistics from "./Pages/Servicepages/Logistics";
 import Contact from "./Pages/Contact";
+import FloatingWhatsApp from "./Components/FloatingWhatsApp";
 
 // import DigitalMarketing from "./Pages/Servicepages/DigitalMarketing";
 
@@ -31,6 +32,7 @@ function App() {
         /> */}
       </Routes>
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }

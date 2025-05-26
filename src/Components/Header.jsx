@@ -48,8 +48,8 @@ const Header = () => {
   }, [menuOpen]);
 
   const linkClass = (path) =>
-    `hover:text-blue-500 transition-colors duration-200 ${
-      isActive(path) ? "text-blue-600 font-semibold" : "text-gray-700"
+    `hover:text-[#06b6d4] transition-all duration-300 font-medium ${
+      isActive(path) ? "text-[#3b82f6] font-semibold" : "text-[#f8fafc]"
     }`;
 
   const services = [
@@ -107,7 +107,7 @@ const Header = () => {
     return (
       <div className='w-full'>
         <button
-          className='w-full text-left cursor-pointer text-gray-700 hover:bg-gray-100 px-2 py-2 rounded flex items-center justify-between'
+          className='w-full text-left cursor-pointer text-[#f8fafc] hover:bg-[#1e293bcc] px-3 py-2 rounded-md transition-all duration-200 flex items-center justify-between'
           onClick={(e) => {
             e.preventDefault();
             setMobileServicesOpen(!mobileServicesOpen);
@@ -124,7 +124,7 @@ const Header = () => {
           <div className='pl-4 space-y-1 mt-1 max-h-96 overflow-y-auto'>
             {services.map((category) => (
               <div key={category.category} className='mb-3'>
-                <div className='text-xs font-semibold text-gray-500 uppercase tracking-wider px-2 py-1'>
+                <div className='text-xs font-semibold text-[#3b82f6] uppercase tracking-wider px-3 py-2 bg-[#3b82f6]/5 rounded-md'>
                   {category.category}
                 </div>
                 {category.items.map((service) => {
@@ -133,10 +133,10 @@ const Header = () => {
                     <Link
                       key={service.name}
                       to={service.path}
-                      className={`flex items-center gap-2 text-sm px-2 py-2 hover:bg-gray-100 rounded transition-colors duration-200 ${
+                      className={`flex items-center gap-3 text-sm px-3 py-2 hover:bg-[#1e293bcc] rounded-md transition-all duration-200 ${
                         isActive(service.path)
-                          ? "text-blue-600 bg-blue-50 font-semibold"
-                          : "text-gray-600 hover:text-blue-600"
+                          ? "text-[#3b82f6] bg-[#3b82f6]/10 font-semibold"
+                          : "text-[#f8fafc] hover:text-[#06b6d4]"
                       }`}
                       onClick={() => {
                         setMenuOpen(false);
@@ -160,7 +160,7 @@ const Header = () => {
     return (
       <div className='relative'>
         <button
-          className='flex items-center gap-1 text-gray-700 hover:text-blue-500 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-gray-50'
+          className='flex items-center gap-1 text-[#f8fafc] hover:text-[#06b6d4] transition-all duration-300 py-2 px-4 rounded-lg hover:bg-[#1e293bcc] font-medium'
           onMouseEnter={() => setServicesOpen(true)}
           onClick={() => setServicesOpen(!servicesOpen)}>
           <span>Services</span>
@@ -172,37 +172,37 @@ const Header = () => {
         </button>
 
         <div
-          className={`absolute left-0 mt-1 w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-50 transition-all duration-300 transform origin-top ${
+          className={`absolute left-0 mt-2 w-80 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl shadow-xl backdrop-blur-sm z-50 transition-all duration-300 transform origin-top ${
             servicesOpen
               ? "opacity-100 scale-100 translate-y-0"
               : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
           }`}
           onMouseLeave={() => setServicesOpen(false)}>
-          <div className='py-2 max-h-96 overflow-y-auto'>
+          <div className='py-3 max-h-96 overflow-y-auto'>
             {services.map((category, categoryIndex) => (
               <div key={category.category}>
-                <div className='px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50'>
+                <div className='px-4 py-2 text-xs font-semibold text-[#1e293b] uppercase tracking-wider bg-[#3b82f6]/5 mx-3 rounded-lg'>
                   {category.category}
                 </div>
 
-                <div className='py-1'>
+                <div className='py-2 px-3'>
                   {category.items.map((service) => {
                     const IconComponent = service.icon;
                     return (
                       <Link
                         key={service.name}
                         to={service.path}
-                        className={`group flex items-center gap-3 px-4 py-3 transition-all duration-200 ${
+                        className={`group flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 ${
                           isActive(service.path)
-                            ? "text-blue-600 bg-blue-50 border-r-2 border-blue-500"
-                            : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                            ? "text-[#3b82f6] bg-[#3b82f6]/10 border border-[#3b82f6]/20"
+                            : "text-[#1e293b] hover:text-[#3b82f6] hover:bg-[#f1f5f9]"
                         }`}
                         onClick={() => setServicesOpen(false)}>
                         <div
                           className={`flex-shrink-0 w-5 h-5 transition-colors duration-200 ${
                             isActive(service.path)
-                              ? "text-blue-500"
-                              : "text-gray-500 group-hover:text-blue-500"
+                              ? "text-[#3b82f6]"
+                              : "text-[#64748b] group-hover:text-[#3b82f6]"
                           }`}>
                           <IconComponent className='w-full h-full' />
                         </div>
@@ -213,7 +213,7 @@ const Header = () => {
                               ? "opacity-100"
                               : "opacity-0 group-hover:opacity-100"
                           }`}>
-                          <div className='w-1 h-1 bg-blue-500 rounded-full'></div>
+                          <div className='w-2 h-2 bg-[#3b82f6] rounded-full'></div>
                         </div>
                       </Link>
                     );
@@ -221,12 +221,12 @@ const Header = () => {
                 </div>
 
                 {categoryIndex < services.length - 1 && (
-                  <div className='border-t border-gray-100 my-1'></div>
+                  <div className='border-t border-[#e2e8f0] mx-3 my-2'></div>
                 )}
               </div>
             ))}
           </div>
-          <div className='h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-b-lg'></div>
+          <div className='h-1 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] rounded-b-xl'></div>
         </div>
       </div>
     );
@@ -234,62 +234,14 @@ const Header = () => {
 
   return (
     <>
-      {/* 🔷 Top Info Bar */}
-      <div className='bg-white shadow-md'>
-        <div className='bg-blue-900 text-white text-sm py-2 px-4'>
-          <div className='max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2'>
-            <div className='flex items-center gap-4 sm:gap-6'>
-              <div className='flex items-center gap-2'>
-                <Mail size={16} />
-                <span className='hidden sm:inline'>
-                  tondonholdings@gmail.com
-                </span>
-                <span className='sm:hidden'>Email</span>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Phone size={16} />
-                <span className='hidden sm:inline'>+977 -980000000</span>
-                <span className='sm:hidden'>Call</span>
-              </div>
-            </div>
-            <div className='flex items-center gap-3 sm:gap-4'>
-              <a
-                href='#'
-                className='hover:text-gray-200 transition'
-                aria-label='Twitter'>
-                <Twitter size={16} className='sm:w-[18px] sm:h-[18px]' />
-              </a>
-              <a
-                href='#'
-                className='hover:text-gray-200 transition'
-                aria-label='Facebook'>
-                <Facebook size={16} className='sm:w-[18px] sm:h-[18px]' />
-              </a>
-              <a
-                href='#'
-                className='hover:text-gray-200 transition'
-                aria-label='Instagram'>
-                <Instagram size={16} className='sm:w-[18px] sm:h-[18px]' />
-              </a>
-              <a
-                href='#'
-                className='hover:text-gray-200 transition'
-                aria-label='LinkedIn'>
-                <Linkedin size={16} className='sm:w-[18px] sm:h-[18px]' />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* 🔷 Main Navigation */}
-      <div className='sticky top-0 z-50 bg-white bg-gradient-to-br from-blue-400/20 to-purple-300/20'>
-        <div className='max-w-7xl mx-auto px-4 py-3 flex items-center justify-between'>
+      <div className='sticky top-0 z-50 bg-[#1e293b] shadow-lg border-b border-[#334155]'>
+        <div className='max-w-7xl mx-auto px-4 py-4 flex items-center justify-between'>
           <Link
             to='/'
-            className='text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 font-sans hover:opacity-80 transition-opacity duration-200'>
-            <span className='text-purple-600'>Tondon</span>{" "}
-            <span className='text-blue-500'>Holdings</span>
+            className='text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#f8fafc] font-heading hover:opacity-90 transition-opacity duration-300'>
+            <span className='text-[#3b82f6]'>Tondon</span>{" "}
+            <span className='text-[#06b6d4]'>Holdings</span>
           </Link>
 
           <div className='mobile-menu-container'>
@@ -298,35 +250,69 @@ const Header = () => {
                 e.stopPropagation();
                 setMenuOpen(!menuOpen);
               }}
-              className='md:hidden focus:outline-none p-2 rounded-md hover:bg-gray-100 transition-colors'
+              className='md:hidden focus:outline-none p-2 rounded-lg hover:bg-[#334155] transition-colors text-[#f8fafc]'
               aria-label='Toggle menu'>
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
-          <nav className='hidden md:flex space-x-6 lg:space-x-8 text-base font-medium items-center'>
-            <Link to='/' className={linkClass("/")}>
+          <nav className='hidden md:flex space-x-2 lg:space-x-4 text-base font-medium items-center'>
+            <Link
+              to='/'
+              className={`px-4 py-2 rounded-lg transition-all duration-300 ${linkClass(
+                "/"
+              )}`}>
               Home
             </Link>
 
             <DesktopServicesDropdown />
 
-            <Link to='/about' className={linkClass("/about")}>
+            <Link
+              to='/about'
+              className={`px-4 py-2 rounded-lg transition-all duration-300 ${linkClass(
+                "/about"
+              )}`}>
               About
             </Link>
-            <Link to='/contact' className={linkClass("/contact")}>
+            <Link
+              to='/contact'
+              className={`px-4 py-2 rounded-lg transition-all duration-300 ${linkClass(
+                "/contact"
+              )}`}>
               Contact
             </Link>
+
+            {/* Mail and Phone Icons */}
+            <div className='flex items-center space-x-2 ml-6 border-l border-[#334155] pl-6'>
+              <a
+                href='mailto:info@tondonholdings.com'
+                className='text-[#f8fafc] hover:text-[#06b6d4] transition-all duration-300 p-2 hover:bg-[#334155] rounded-lg group'
+                aria-label='Email us'>
+                <Mail
+                  size={20}
+                  className='group-hover:scale-110 transition-transform duration-200'
+                />
+              </a>
+              <a
+                href='tel:+1234567890'
+                className='text-[#f8fafc] hover:text-[#06b6d4] transition-all duration-300 p-2 hover:bg-[#334155] rounded-lg group'
+                aria-label='Call us'>
+                <Phone
+                  size={20}
+                  className='group-hover:scale-110 transition-transform duration-200'
+                />
+              </a>
+            </div>
           </nav>
         </div>
 
         {/* Mobile Menu */}
         {menuOpen && (
           <>
-            <div className='mobile-menu-container md:hidden bg-white border-t border-gray-300 shadow-lg px-4 py-3 space-y-2 max-h-[70vh] overflow-y-auto'>
+            <div className='mobile-menu-container md:hidden bg-[#1e293b] border-t border-[#334155] shadow-xl px-4 py-4 space-y-3 max-h-[70vh] overflow-y-auto'>
               <Link
                 to='/'
-                className={`block hover:bg-gray-100 px-2 py-2 rounded transition-colors duration-200 ${linkClass(
+                className={`block hover:bg-[#334155] px-3 py-2 rounded-lg transition-all duration-300 ${linkClass(
                   "/"
                 )}`}
                 onClick={() => setMenuOpen(false)}>
@@ -337,7 +323,7 @@ const Header = () => {
 
               <Link
                 to='/about'
-                className={`block hover:bg-gray-100 px-2 py-2 rounded transition-colors duration-200 ${linkClass(
+                className={`block hover:bg-[#334155] px-3 py-2 rounded-lg transition-all duration-300 ${linkClass(
                   "/about"
                 )}`}
                 onClick={() => setMenuOpen(false)}>
@@ -345,19 +331,43 @@ const Header = () => {
               </Link>
               <Link
                 to='/contact'
-                className={`block hover:bg-gray-100 px-2 py-2 rounded transition-colors duration-200 ${linkClass(
+                className={`block hover:bg-[#334155] px-3 py-2 rounded-lg transition-all duration-300 ${linkClass(
                   "/contact"
                 )}`}
                 onClick={() => setMenuOpen(false)}>
                 Contact
               </Link>
+
+              {/* Mobile Mail and Phone Icons */}
+              <div className='flex items-center space-x-4 pt-4 border-t border-[#334155] mt-4'>
+                <a
+                  href='mailto:info@tondonholdings.com'
+                  className='flex items-center gap-3 text-[#f8fafc] hover:text-[#06b6d4] transition-all duration-300 px-3 py-2 hover:bg-[#334155] rounded-lg group flex-1'
+                  onClick={() => setMenuOpen(false)}>
+                  <Mail
+                    size={18}
+                    className='group-hover:scale-110 transition-transform duration-200'
+                  />
+                  <span className='text-sm font-medium'>Email</span>
+                </a>
+                <a
+                  href='tel:+1234567890'
+                  className='flex items-center gap-3 text-[#f8fafc] hover:text-[#06b6d4] transition-all duration-300 px-3 py-2 hover:bg-[#334155] rounded-lg group flex-1'
+                  onClick={() => setMenuOpen(false)}>
+                  <Phone
+                    size={18}
+                    className='group-hover:scale-110 transition-transform duration-200'
+                  />
+                  <span className='text-sm font-medium'>Call</span>
+                </a>
+              </div>
             </div>
 
             {/* Mobile Overlay */}
-            {/* <div
-              className='fixed inset-0  bg-opacity-20 z-40 md:hidden'
+            <div
+              className='fixed inset-0 bg-[#1e293bcc] backdrop-blur-sm z-40 md:hidden'
               onClick={() => setMenuOpen(false)}
-            /> */}
+            />
           </>
         )}
       </div>
