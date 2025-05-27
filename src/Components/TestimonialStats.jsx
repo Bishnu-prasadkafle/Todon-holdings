@@ -173,17 +173,30 @@ const TestimonialsStats = () => {
       <Star
         key={index}
         size={20}
-        className={`${
-          index < rating ? "text-yellow-400 fill-current" : "text-slate-500"
-        } transition-all duration-300`}
+        style={{
+          color:
+            index < rating
+              ? "var(--color-secondary)"
+              : "var(--color-navycream)",
+          fill: index < rating ? "var(--color-secondary)" : "none",
+          transition: "color 0.3s, fill 0.3s",
+        }}
       />
     ));
   };
 
   return (
-    <section className='py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden'>
+    <section
+      className='py-20 overflow-hidden'
+      style={{ background: "var(--color-cream)", position: "relative" }}>
       {/* Background Elements */}
-      <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] animate-pulse'></div>
+      <div
+        className='absolute inset-0'
+        style={{
+          background:
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          opacity: 0.5,
+        }}></div>
 
       <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
         {/* Stats Section */}
@@ -195,16 +208,34 @@ const TestimonialsStats = () => {
                 ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
                 : "opacity-0 translate-y-10"
             }`}>
-            <h2 className='text-4xl lg:text-5xl font-bold text-white mb-6 transform transition-all duration-700 hover:scale-105'>
+            <h2
+              className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
+              style={{ color: "var(--color-primary)" }}>
               Our Impact in{" "}
-              <span className='bg-gradient-to-r from-blue-700 to-emerald-500 bg-clip-text text-transparent hover:from-blue-500 hover:to-emerald-400 inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'>
+              <span
+                className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
+                style={{
+                  background:
+                    "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}>
                 Numbers
               </span>
             </h2>
-            <p className='text-xl text-slate-200 max-w-2xl mx-auto transition-colors duration-500 ease-in-out hover:text-slate-100'>
+            <p
+              className='text-xl max-w-2xl mx-auto transition-colors duration-500 ease-in-out'
+              style={{ color: "var(--color-secondary)" }}>
               Proven results that speak for themselves
             </p>
-            <div className='w-24 h-1 bg-gradient-to-r from-blue-700 to-emerald-500 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32 hover:shadow-lg hover:shadow-emerald-400/30'></div>
+            <div
+              className='w-24 h-1 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32'
+              style={{
+                background:
+                  "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+              }}></div>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
@@ -217,29 +248,46 @@ const TestimonialsStats = () => {
                   key={index}
                   ref={(el) => (statCardRefs.current[index] = el)}
                   data-card-id={index}
-                  className={`group text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-400/30 transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 hover:shadow-xl hover:shadow-emerald-400/20 will-change-transform ${
+                  className={`group text-center rounded-2xl p-8 border transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 shadow-lg ${
                     isCardVisible
                       ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
                       : "opacity-0 translate-y-10"
                   }`}
                   style={{
+                    background: "var(--color-navycream)",
+                    borderColor: "var(--color-secondary)",
                     transitionDelay: isCardVisible ? `${index * 150}ms` : "0ms",
                   }}>
                   <div className='mb-4'>
-                    <div className='w-16 h-16 bg-gradient-to-br from-slate-700 to-slate-600 rounded-full flex items-center justify-center mx-auto group-hover:bg-gradient-to-br group-hover:from-blue-700 group-hover:to-emerald-500 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 border-4 border-white/20 group-hover:border-emerald-400/50 shadow-lg group-hover:shadow-emerald-400/25'>
+                    <div
+                      className='w-16 h-16 rounded-full flex items-center justify-center mx-auto transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 shadow-lg'
+                      style={{
+                        background:
+                          "linear-gradient(135deg, var(--color-secondary), var(--color-primary))",
+                        border: "4px solid var(--color-navycream)",
+                      }}>
                       <IconComponent
                         size={28}
-                        className='text-slate-400 group-hover:text-white transition-all duration-500'
+                        style={{
+                          color: "var(--color-cream)",
+                          transition: "color 0.5s",
+                        }}
                       />
                     </div>
                   </div>
-                  <div className='text-4xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-all duration-500 hover:scale-105 hover:translate-y-[-2px]'>
+                  <div
+                    className='text-4xl font-bold mb-2 group-hover:scale-105 group-hover:translate-y-[-2px] transition-all duration-500'
+                    style={{ color: "var(--color-primary)" }}>
                     {stat.number}
                   </div>
-                  <div className='text-xl font-semibold text-slate-200 mb-2 group-hover:text-slate-100 transition-all duration-300'>
+                  <div
+                    className='text-xl font-semibold mb-2 transition-all duration-300'
+                    style={{ color: "var(--color-secondary)" }}>
                     {stat.label}
                   </div>
-                  <div className='text-slate-200 group-hover:text-slate-100 transition-all duration-300'>
+                  <div
+                    className='transition-all duration-300'
+                    style={{ color: "var(--color-secondary)" }}>
                     {stat.description}
                   </div>
                 </div>
@@ -257,16 +305,34 @@ const TestimonialsStats = () => {
                 ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
                 : "opacity-0 translate-y-10"
             }`}>
-            <h2 className='text-4xl lg:text-5xl font-bold text-white mb-6 transform transition-all duration-700 hover:scale-105'>
+            <h2
+              className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
+              style={{ color: "var(--color-primary)" }}>
               What Our{" "}
-              <span className='bg-gradient-to-r from-blue-700 to-emerald-500 bg-clip-text text-transparent hover:from-blue-500 hover:to-emerald-400 inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'>
+              <span
+                className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
+                style={{
+                  background:
+                    "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}>
                 Clients Say
               </span>
             </h2>
-            <p className='text-xl text-slate-200 max-w-2xl mx-auto transition-colors duration-500 ease-in-out hover:text-slate-100'>
+            <p
+              className='text-xl max-w-2xl mx-auto transition-colors duration-500 ease-in-out'
+              style={{ color: "var(--color-secondary)" }}>
               Don't just take our word for it - hear from our satisfied clients
             </p>
-            <div className='w-24 h-1 bg-gradient-to-r from-blue-700 to-emerald-500 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32 hover:shadow-lg hover:shadow-emerald-400/30'></div>
+            <div
+              className='w-24 h-1 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32'
+              style={{
+                background:
+                  "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+              }}></div>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -280,17 +346,22 @@ const TestimonialsStats = () => {
                   key={testimonial.id}
                   ref={(el) => (testimonialCardRefs.current[index] = el)}
                   data-card-id={testimonial.id}
-                  className={`group bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-400/30 transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 relative overflow-hidden hover:shadow-xl hover:shadow-emerald-400/20 will-change-transform ${
+                  className={`group rounded-2xl p-8 border transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 shadow-lg relative overflow-hidden ${
                     isCardVisible
                       ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
                       : "opacity-0 translate-y-10"
                   }`}
                   style={{
+                    background: "var(--color-navycream)",
+                    borderColor: "var(--color-secondary)",
                     transitionDelay: isCardVisible ? `${index * 200}ms` : "0ms",
                   }}>
                   {/* Quote Icon */}
                   <div className='absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-all duration-500'>
-                    <Quote size={40} className='text-emerald-400' />
+                    <Quote
+                      size={40}
+                      style={{ color: "var(--color-secondary)" }}
+                    />
                   </div>
 
                   {/* Rating */}
@@ -299,7 +370,9 @@ const TestimonialsStats = () => {
                   </div>
 
                   {/* Content */}
-                  <p className='text-slate-200 mb-6 leading-relaxed group-hover:text-slate-100 transition-all duration-500 italic'>
+                  <p
+                    className='mb-6 leading-relaxed group-hover:opacity-90 transition-all duration-500 italic'
+                    style={{ color: "var(--color-secondary)" }}>
                     "{testimonial.content}"
                   </p>
 
@@ -308,20 +381,34 @@ const TestimonialsStats = () => {
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className='w-12 h-12 rounded-full object-cover mr-4 group-hover:scale-110 transition-all duration-500 border-2 border-white/20 group-hover:border-emerald-400/50 shadow-lg group-hover:shadow-emerald-400/25'
+                      className='w-12 h-12 rounded-full object-cover mr-4 group-hover:scale-110 transition-all duration-500 border-2'
+                      style={{
+                        borderColor: "var(--color-navycream)",
+                        boxShadow:
+                          "0 2px 8px 0 var(--color-primary, #232946, 0.08)",
+                      }}
                     />
                     <div>
-                      <div className='font-semibold text-white group-hover:text-emerald-300 transition-all duration-500'>
+                      <div
+                        className='font-semibold transition-all duration-500'
+                        style={{ color: "var(--color-primary)" }}>
                         {testimonial.name}
                       </div>
-                      <div className='text-slate-400 text-sm group-hover:text-slate-300 transition-all duration-300'>
+                      <div
+                        className='text-sm transition-all duration-300'
+                        style={{ color: "var(--color-secondary)" }}>
                         {testimonial.position}, {testimonial.company}
                       </div>
                     </div>
                   </div>
 
                   {/* Hover accent */}
-                  <div className='absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-700 to-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left shadow-lg group-hover:shadow-emerald-400/30'></div>
+                  <div
+                    className='absolute bottom-0 left-0 w-full h-1 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left shadow-lg'
+                    style={{
+                      background:
+                        "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+                    }}></div>
                 </div>
               );
             })}
@@ -331,31 +418,57 @@ const TestimonialsStats = () => {
         {/* Bottom CTA */}
         <div
           ref={ctaRef}
-          className={`text-center mt-16 bg-white/5 backdrop-blur-sm rounded-2xl p-12 border border-white/10 hover:border-emerald-400/20 transition-all duration-1000 hover:bg-white/10 ${
+          className={`text-center mt-16 rounded-2xl p-12 border transition-all duration-1000 ${
             ctaVisible
               ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
               : "opacity-0 translate-y-10"
           }`}
-          style={{ transitionDelay: ctaVisible ? "600ms" : "0ms" }}>
-          <h3 className='text-3xl font-bold mb-4 text-white transition-colors duration-500 hover:text-emerald-300'>
+          style={{
+            background: "rgba(255,255,255,0.05)",
+            backdropFilter: "blur(6px)",
+            borderColor: "var(--color-navycream)",
+            transitionDelay: ctaVisible ? "600ms" : "0ms",
+          }}>
+          <h3
+            className='text-3xl font-bold mb-4 transition-colors duration-500'
+            style={{ color: "var(--color-primary)" }}>
             Ready to Join Our Success Stories?
           </h3>
-          <p className='text-slate-200 mb-8 max-w-2xl mx-auto text-lg transition-colors duration-500 hover:text-slate-100'>
+          <p
+            className='mb-8 max-w-2xl mx-auto text-lg transition-colors duration-500'
+            style={{ color: "var(--color-secondary)" }}>
             Let us help you achieve the same remarkable results our clients
             experience every day
           </p>
-          <button className='group relative bg-gradient-to-r from-blue-700 to-emerald-500 hover:from-blue-600 hover:to-emerald-400 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-transform duration-500 ease-in-out shadow-lg hover:shadow-emerald-400/30 transform hover:scale-110 hover:-translate-y-2 active:scale-95 border border-blue-500/30 hover:border-emerald-400/50 backdrop-blur-sm'>
+          <button
+            className='group relative px-10 py-5 rounded-xl font-semibold text-lg transition-transform duration-500 ease-in-out shadow-lg hover:scale-110 hover:-translate-y-2 active:scale-95 border backdrop-blur-sm'
+            style={{
+              color: "var(--color-cream)",
+              background:
+                "linear-gradient(90deg, var(--color-secondary), var(--color-primary))",
+              borderColor: "var(--color-secondary)",
+            }}>
             <span className='relative z-10 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
               Start Your Success Story
             </span>
             <span className='ml-2 transform group-hover:translate-x-1 transition-transform duration-300'>
               →
             </span>
-            <div className='absolute inset-0 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ease-in-out transform group-hover:scale-105'></div>
+            <div
+              className='absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ease-in-out transform group-hover:scale-105'
+              style={{
+                background:
+                  "linear-gradient(90deg, var(--color-navycream), var(--color-secondary))",
+              }}></div>
           </button>
 
           {/* Pulse Animation Line */}
-          <div className='w-1 h-3 bg-white/40 rounded-full mt-6 mx-auto animate-pulse hover:bg-emerald-400/70 transition-colors duration-300 ease-in-out'></div>
+          <div
+            className='w-1 h-3 rounded-full mt-6 mx-auto animate-pulse transition-colors duration-300 ease-in-out'
+            style={{
+              backgroundColor: "var(--color-secondary)",
+              opacity: 0.7,
+            }}></div>
         </div>
       </div>
     </section>

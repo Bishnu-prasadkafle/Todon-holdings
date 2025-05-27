@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+:root {
+  --color-primary: #232946; /* Rich Navy */
+  --color-secondary: #005f73; /* Deep Teal */
+  --color-cream: #f4faff; /* Very Light Blue */
+  --color-navycream: #e8eaf6; /* Soft Blue-Gray */
+}
+
+/* Optional: Utility classes if you want to use them in className */
+.header-bg {
+  background-color: var(--color-primary);
+}
+.header-text {
+  color: var(--color-cream);
+}
+.header-accent {
+  color: var(--color-secondary);
+}
+
+.active-link {
+  color: var(--color-secondary) !important;
+  background-color: var(--color-navycream);
+  font-weight: 600;
+}
+.inactive-link {
+  color: var(--color-cream);
+}
