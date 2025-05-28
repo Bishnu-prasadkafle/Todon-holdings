@@ -1,40 +1,8 @@
-import { Shield, Zap, Users, Award } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const WhyChooseUs = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [visibleCards, setVisibleCards] = useState([]);
-  const [ctaVisible, setCtaVisible] = useState(false);
   const sectionRef = useRef(null);
-  const cardRefs = useRef([]);
-  const ctaRef = useRef(null);
-
-  const features = [
-    {
-      icon: Shield,
-      title: "Enterprise Security",
-      description:
-        "Bank-level encryption and security protocols to protect your data with advanced threat detection.",
-    },
-    {
-      icon: Zap,
-      title: "Lightning Fast",
-      description:
-        "Real-time processing with 99.9% uptime guarantee and instant data synchronization.",
-    },
-    {
-      icon: Users,
-      title: "Expert Support",
-      description:
-        "24/7 dedicated support from analytics professionals with personalized assistance.",
-    },
-    {
-      icon: Award,
-      title: "Industry Leader",
-      description:
-        "Trusted by 10,000+ companies worldwide with proven track record of success.",
-    },
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,221 +17,214 @@ const WhyChooseUs = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const cardObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const cardId = parseInt(entry.target.dataset.cardId);
-            setVisibleCards((prev) => [...new Set([...prev, cardId])]);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    cardRefs.current.forEach((ref) => {
-      if (ref) cardObserver.observe(ref);
-    });
-
-    return () => {
-      cardRefs.current.forEach((ref) => {
-        if (ref) cardObserver.unobserve(ref);
-      });
-    };
-  }, []);
-
-  useEffect(() => {
-    const ctaObserver = new IntersectionObserver(
-      ([entry]) => setCtaVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    if (ctaRef.current) {
-      ctaObserver.observe(ctaRef.current);
-    }
-    return () => {
-      if (ctaRef.current) ctaObserver.unobserve(ctaRef.current);
-    };
-  }, []);
-
   return (
     <section
       ref={sectionRef}
-      className='py-10 overflow-hidden'
+      className='relative py-10'
       style={{
         background: "#f8fafc",
-        position: "relative",
       }}>
-      {/* Background Elements */}
+      {/* Subtle background dots */}
       <div
         className='absolute inset-0'
         style={{
           background:
-            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          opacity: 0.5,
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          opacity: 0.3,
         }}></div>
 
       <div className='relative z-10 max-w-7xl mx-auto px-2 lg:px-4'>
-        {/* Header with scroll animation */}
+        {/* Header */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 ease-out ${
+          className={`text-center transition-all duration-1000 ease-out ${
             isVisible
               ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
               : "opacity-0 translate-y-10"
           }`}>
           <h2
-            className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
-            style={{ color: "var(--color-primary)" }}>
-            Why Choose{" "}
-            <span
-              className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
-              style={{
-                color: "var(--color-secondary)",
-                WebkitBackgroundClip: "unset",
-                WebkitTextFillColor: "unset",
-                backgroundClip: "unset",
-              }}>
-              Us
-            </span>
+            className='text-4xl lg:text-5xl font-bold mb-6'
+            style={{
+              color: "#1e293b",
+            }}>
+            Why Choose Us
           </h2>
           <p
-            className='text-xl max-w-3xl mx-auto leading-relaxed transition-colors duration-500 ease-in-out'
-            style={{ color: "var(--color-secondary)" }}>
-            Leading the industry with innovative solutions, unmatched expertise,
-            and unwavering commitment to your success
+            className='text-xl max-w-2xl mx-auto leading-relaxed'
+            style={{ color: "#64748b" }}>
+            Experience excellence with Tondon Holdings - where quality meets
+            innovation across diverse industries. We deliver trusted solutions
+            that drive success and create lasting value for our partners.
           </p>
-          <div
-            className='w-24 h-1 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32'
-            style={{
-              background: "var(--color-secondary)",
-            }}></div>
         </div>
 
-        {/* Features Grid with scroll animations */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12'>
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon;
-            const isCardVisible = visibleCards.includes(index);
-
-            return (
-              <div
-                key={index}
-                ref={(el) => (cardRefs.current[index] = el)}
-                data-card-id={index}
-                className={`group text-center rounded-3xl p-8 border transition-all duration-1000 transform hover:scale-105 hover:-translate-y-4 shadow-lg ${
-                  isCardVisible
-                    ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
-                    : "opacity-0 translate-y-10"
-                }`}
-                style={{
-                  background: "var(--color-navycream)",
-                  borderColor: "var(--color-secondary)",
-                  transitionDelay: isCardVisible ? `${index * 150}ms` : "0ms",
-                }}>
-                {/* Icon Container */}
-                <div className='mb-8'>
-                  <div
-                    className='w-24 h-24 rounded-full flex items-center justify-center mx-auto transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 shadow-lg'
-                    style={{
-                      background: "var(--color-secondary)",
-                      border: "4px solid var(--color-navycream)",
-                    }}>
-                    <IconComponent
-                      size={40}
-                      style={{
-                        color: "var(--color-cream)",
-                        transition: "color 0.5s",
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className='space-y-4'>
-                  <h3
-                    className='text-2xl font-bold mb-4 transition-all duration-500 hover:scale-105 hover:translate-y-[-2px]'
-                    style={{ color: "var(--color-primary)" }}>
-                    {feature.title}
-                  </h3>
-                  <p
-                    className='transition-all duration-500 leading-relaxed'
-                    style={{ color: "var(--color-secondary)" }}>
-                    {feature.description}
-                  </p>
-                </div>
-
-                {/* Hover Accent */}
-                <div className='mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0'>
-                  <div
-                    className='w-16 h-1 mx-auto rounded-full shadow-lg'
-                    style={{
-                      background: "var(--color-primary)",
-                    }}></div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Bottom CTA Section with scroll animation */}
+        {/* Why Choose Us Content */}
         <div
-          ref={ctaRef}
-          className={`text-center mt-16 rounded-2xl p-8 border transition-all duration-1000 ${
-            ctaVisible
-              ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
-              : "opacity-0 translate-y-10"
-          }`}
-          style={{
-            background: "rgba(255,255,255,0.05)",
-            backdropFilter: "blur(6px)",
-            borderColor: "var(--color-navycream)",
-            transitionDelay: ctaVisible ? "600ms" : "0ms",
-          }}>
-          <h3
-            className='text-2xl font-bold mb-4 transition-colors duration-500'
-            style={{ color: "var(--color-primary)" }}>
-            Ready to Experience the Difference?
-          </h3>
-          <p
-            className='mb-8 max-w-2xl mx-auto transition-colors duration-500'
-            style={{ color: "var(--color-secondary)" }}>
-            Join thousands of satisfied customers who trust us with their most
-            critical business needs
-          </p>
-          <div className='flex flex-col sm:flex-row items-center justify-center gap-6'>
-            <button
-              className='group relative px-10 py-5 rounded-xl font-semibold text-lg transition-transform duration-500 ease-in-out shadow-lg hover:scale-110 hover:-translate-y-2 active:scale-95 border backdrop-blur-sm'
-              style={{
-                color: "var(--color-cream)",
-                background: "var(--color-secondary)",
-                borderColor: "var(--color-secondary)",
-              }}>
-              <span className='relative z-10 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
-                Get Started Today
-              </span>
-              <div
-                className='absolute inset-0 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 ease-in-out transform group-hover:scale-105'
-                style={{
-                  background: "var(--color-navycream)",
-                }}></div>
-            </button>
-            <button
-              className='group font-semibold text-lg transition-all duration-500 flex items-center gap-2 hover:scale-105'
-              style={{ color: "var(--color-secondary)" }}>
-              Learn More
-              <span className='transform group-hover:translate-x-1 transition-transform duration-300'>
-                →
-              </span>
-            </button>
+          className={`mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}>
+          {/* Expertise Card */}
+          <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
+            <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6'>
+              <svg
+                className='w-8 h-8 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'
+                />
+              </svg>
+            </div>
+            <h3
+              className='text-2xl font-bold mb-4'
+              style={{ color: "#1e293b" }}>
+              Proven Expertise
+            </h3>
+            <p className='leading-relaxed' style={{ color: "#64748b" }}>
+              Years of experience across tourism, clothing, education
+              consultancy, and technology sectors with a track record of
+              successful projects.
+            </p>
           </div>
 
-          {/* Pulse Animation Line */}
-          <div
-            className='w-1 h-3 rounded-full mt-6 mx-auto animate-pulse transition-colors duration-300 ease-in-out'
-            style={{
-              backgroundColor: "var(--color-secondary)",
-              opacity: 0.7,
-            }}></div>
+          {/* Quality Card */}
+          <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
+            <div className='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6'>
+              <svg
+                className='w-8 h-8 text-green-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+                />
+              </svg>
+            </div>
+            <h3
+              className='text-2xl font-bold mb-4'
+              style={{ color: "#1e293b" }}>
+              Quality Assurance
+            </h3>
+            <p className='leading-relaxed' style={{ color: "#64748b" }}>
+              We maintain the highest standards in all our services, ensuring
+              excellence and reliability in every project we undertake.
+            </p>
+          </div>
+
+          {/* Innovation Card */}
+          <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
+            <div className='w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6'>
+              <svg
+                className='w-8 h-8 text-purple-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M13 10V3L4 14h7v7l9-11h-7z'
+                />
+              </svg>
+            </div>
+            <h3
+              className='text-2xl font-bold mb-4'
+              style={{ color: "#1e293b" }}>
+              Innovation Focus
+            </h3>
+            <p className='leading-relaxed' style={{ color: "#64748b" }}>
+              We leverage cutting-edge technology and innovative approaches to
+              deliver solutions that stay ahead of industry trends.
+            </p>
+          </div>
+
+          {/* Customer Support Card */}
+          <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
+            <div className='w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6'>
+              <svg
+                className='w-8 h-8 text-orange-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'
+                />
+              </svg>
+            </div>
+            <h3
+              className='text-2xl font-bold mb-4'
+              style={{ color: "#1e293b" }}>
+              24/7 Support
+            </h3>
+            <p className='leading-relaxed' style={{ color: "#64748b" }}>
+              Round-the-clock customer support ensures you always have
+              assistance when you need it, with dedicated account management.
+            </p>
+          </div>
+
+          {/* Global Reach Card */}
+          <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
+            <div className='w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6'>
+              <svg
+                className='w-8 h-8 text-teal-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                />
+              </svg>
+            </div>
+            <h3
+              className='text-2xl font-bold mb-4'
+              style={{ color: "#1e293b" }}>
+              Global Reach
+            </h3>
+            <p className='leading-relaxed' style={{ color: "#64748b" }}>
+              Our international presence and partnerships enable us to serve
+              clients worldwide with local expertise and global standards.
+            </p>
+          </div>
+
+          {/* Competitive Pricing Card */}
+          <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
+            <div className='w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6'>
+              <svg
+                className='w-8 h-8 text-red-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                />
+              </svg>
+            </div>
+            <h3
+              className='text-2xl font-bold mb-4'
+              style={{ color: "#1e293b" }}>
+              Value Pricing
+            </h3>
+            <p className='leading-relaxed' style={{ color: "#64748b" }}>
+              Competitive and transparent pricing models that deliver
+              exceptional value without compromising on quality or service
+              excellence.
+            </p>
+          </div>
         </div>
       </div>
     </section>

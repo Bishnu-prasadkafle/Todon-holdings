@@ -150,7 +150,7 @@ const Footer = () => {
     <footer
       className='relative pt-12 pb-6 overflow-hidden border-t'
       style={{
-        backgroundColor: "var(--color-primary)",
+        backgroundColor: "rgba(30,41,59,0.7)",
         color: "var(--color-cream)",
         borderColor: "var(--color-secondary)",
       }}>

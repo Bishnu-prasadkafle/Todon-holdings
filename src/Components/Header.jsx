@@ -130,7 +130,7 @@ const Header = () => {
               className='mobile-menu-container md:hidden shadow-xl px-4 py-4 space-y-3 max-h-[70vh] overflow-y-auto'
               style={{
                 backgroundColor: "rgba(30,41,59,0.98)",
-                borderTop: "1px solid #2563eb",
+                // borderTop: "1px solid #2563eb",
               }}>
               <Link
                 to='/'
