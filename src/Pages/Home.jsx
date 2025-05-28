@@ -6,7 +6,7 @@ import TestimonialsStats from "../Components/TestimonialStats";
 
 const Home = () => {
   return (
-    <div>
+    <div className='#f8fafc'>
       <HeroSection />
       <Analytics />
       <WhyChooseUs />

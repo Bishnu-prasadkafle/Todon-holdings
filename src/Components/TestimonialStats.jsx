@@ -17,22 +17,20 @@ const TestimonialsStats = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Kshitiz Dawadi",
       position: "CEO",
-      company: "TechCorp Solutions",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      company: "Sree Ram IT Solutions",
+      image: "",
       content:
         "Tondon Holdings transformed our business operations completely. Their innovative solutions increased our efficiency by 300% and helped us scale globally.",
       rating: 5,
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Asbin Thapa",
       position: "CTO",
       company: "DataFlow Inc",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      image: "",
       content:
         "The level of expertise and support provided by Tondon Holdings is unmatched. They delivered results beyond our expectations and continue to be our trusted partner.",
       rating: 5,
@@ -42,8 +40,7 @@ const TestimonialsStats = () => {
       name: "Emily Rodriguez",
       position: "Operations Director",
       company: "Global Ventures",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      image: "",
       content:
         "Working with Tondon Holdings was a game-changer. Their strategic approach and cutting-edge technology helped us achieve our goals faster than we imagined.",
       rating: 5,
@@ -188,14 +185,14 @@ const TestimonialsStats = () => {
   return (
     <section
       className='py-20 overflow-hidden'
-      style={{ background: "var(--color-cream)", position: "relative" }}>
+      style={{ background: "#f8fafc", position: "relative" }}>
       {/* Background Elements */}
       <div
         className='absolute inset-0'
         style={{
           background:
-            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          opacity: 0.5,
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          opacity: 0.3,
         }}></div>
 
       <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
@@ -210,31 +207,29 @@ const TestimonialsStats = () => {
             }`}>
             <h2
               className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
-              style={{ color: "var(--color-primary)" }}>
+              style={{ color: "#1e293b" }}>
               Our Impact in{" "}
               <span
                 className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
                 style={{
-                  background:
-                    "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  color: "transparent",
+                  color: "#005f73",
+                  WebkitBackgroundClip: "unset",
+                  WebkitTextFillColor: "unset",
+                  backgroundClip: "unset",
                 }}>
                 Numbers
               </span>
             </h2>
             <p
               className='text-xl max-w-2xl mx-auto transition-colors duration-500 ease-in-out'
-              style={{ color: "var(--color-secondary)" }}>
+              style={{ color: "#64748b" }}>
               Proven results that speak for themselves
             </p>
             <div
               className='w-24 h-1 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32'
               style={{
-                background:
-                  "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+                background: "#005f73",
+                opacity: 0.15,
               }}></div>
           </div>
 
@@ -254,22 +249,21 @@ const TestimonialsStats = () => {
                       : "opacity-0 translate-y-10"
                   }`}
                   style={{
-                    background: "var(--color-navycream)",
-                    borderColor: "var(--color-secondary)",
+                    background: "#fff",
+                    borderColor: "#e2e8f0",
                     transitionDelay: isCardVisible ? `${index * 150}ms` : "0ms",
                   }}>
                   <div className='mb-4'>
                     <div
                       className='w-16 h-16 rounded-full flex items-center justify-center mx-auto transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 shadow-lg'
                       style={{
-                        background:
-                          "linear-gradient(135deg, var(--color-secondary), var(--color-primary))",
-                        border: "4px solid var(--color-navycream)",
+                        background: "#f1f5f9",
+                        border: "4px solid #fff",
                       }}>
                       <IconComponent
                         size={28}
                         style={{
-                          color: "var(--color-cream)",
+                          color: "#005f73",
                           transition: "color 0.5s",
                         }}
                       />
@@ -277,17 +271,17 @@ const TestimonialsStats = () => {
                   </div>
                   <div
                     className='text-4xl font-bold mb-2 group-hover:scale-105 group-hover:translate-y-[-2px] transition-all duration-500'
-                    style={{ color: "var(--color-primary)" }}>
+                    style={{ color: "#005f73" }}>
                     {stat.number}
                   </div>
                   <div
                     className='text-xl font-semibold mb-2 transition-all duration-300'
-                    style={{ color: "var(--color-secondary)" }}>
+                    style={{ color: "#64748b" }}>
                     {stat.label}
                   </div>
                   <div
                     className='transition-all duration-300'
-                    style={{ color: "var(--color-secondary)" }}>
+                    style={{ color: "#64748b" }}>
                     {stat.description}
                   </div>
                 </div>
@@ -307,31 +301,29 @@ const TestimonialsStats = () => {
             }`}>
             <h2
               className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
-              style={{ color: "var(--color-primary)" }}>
+              style={{ color: "#1e293b" }}>
               What Our{" "}
               <span
                 className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
                 style={{
-                  background:
-                    "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  color: "transparent",
+                  color: "#005f73",
+                  WebkitBackgroundClip: "unset",
+                  WebkitTextFillColor: "unset",
+                  backgroundClip: "unset",
                 }}>
                 Clients Say
               </span>
             </h2>
             <p
               className='text-xl max-w-2xl mx-auto transition-colors duration-500 ease-in-out'
-              style={{ color: "var(--color-secondary)" }}>
+              style={{ color: "#64748b" }}>
               Don't just take our word for it - hear from our satisfied clients
             </p>
             <div
               className='w-24 h-1 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32'
               style={{
-                background:
-                  "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+                background: "#005f73",
+                opacity: 0.15,
               }}></div>
           </div>
 
@@ -352,16 +344,13 @@ const TestimonialsStats = () => {
                       : "opacity-0 translate-y-10"
                   }`}
                   style={{
-                    background: "var(--color-navycream)",
-                    borderColor: "var(--color-secondary)",
+                    background: "#fff",
+                    borderColor: "#e2e8f0",
                     transitionDelay: isCardVisible ? `${index * 200}ms` : "0ms",
                   }}>
                   {/* Quote Icon */}
                   <div className='absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-all duration-500'>
-                    <Quote
-                      size={40}
-                      style={{ color: "var(--color-secondary)" }}
-                    />
+                    <Quote size={40} style={{ color: "#005f73" }} />
                   </div>
 
                   {/* Rating */}
@@ -372,7 +361,7 @@ const TestimonialsStats = () => {
                   {/* Content */}
                   <p
                     className='mb-6 leading-relaxed group-hover:opacity-90 transition-all duration-500 italic'
-                    style={{ color: "var(--color-secondary)" }}>
+                    style={{ color: "#64748b" }}>
                     "{testimonial.content}"
                   </p>
 
@@ -383,20 +372,19 @@ const TestimonialsStats = () => {
                       alt={testimonial.name}
                       className='w-12 h-12 rounded-full object-cover mr-4 group-hover:scale-110 transition-all duration-500 border-2'
                       style={{
-                        borderColor: "var(--color-navycream)",
-                        boxShadow:
-                          "0 2px 8px 0 var(--color-primary, #232946, 0.08)",
+                        borderColor: "#f1f5f9",
+                        boxShadow: "0 2px 8px 0 #23294614",
                       }}
                     />
                     <div>
                       <div
                         className='font-semibold transition-all duration-500'
-                        style={{ color: "var(--color-primary)" }}>
+                        style={{ color: "#1e293b" }}>
                         {testimonial.name}
                       </div>
                       <div
                         className='text-sm transition-all duration-300'
-                        style={{ color: "var(--color-secondary)" }}>
+                        style={{ color: "#64748b" }}>
                         {testimonial.position}, {testimonial.company}
                       </div>
                     </div>
@@ -406,8 +394,8 @@ const TestimonialsStats = () => {
                   <div
                     className='absolute bottom-0 left-0 w-full h-1 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left shadow-lg'
                     style={{
-                      background:
-                        "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
+                      background: "#005f73",
+                      opacity: 0.2,
                     }}></div>
                 </div>
               );
@@ -424,29 +412,28 @@ const TestimonialsStats = () => {
               : "opacity-0 translate-y-10"
           }`}
           style={{
-            background: "rgba(255,255,255,0.05)",
+            background: "rgba(255,255,255,0.7)",
             backdropFilter: "blur(6px)",
-            borderColor: "var(--color-navycream)",
+            borderColor: "#e2e8f0",
             transitionDelay: ctaVisible ? "600ms" : "0ms",
           }}>
           <h3
             className='text-3xl font-bold mb-4 transition-colors duration-500'
-            style={{ color: "var(--color-primary)" }}>
+            style={{ color: "#1e293b" }}>
             Ready to Join Our Success Stories?
           </h3>
           <p
             className='mb-8 max-w-2xl mx-auto text-lg transition-colors duration-500'
-            style={{ color: "var(--color-secondary)" }}>
+            style={{ color: "#64748b" }}>
             Let us help you achieve the same remarkable results our clients
             experience every day
           </p>
           <button
             className='group relative px-10 py-5 rounded-xl font-semibold text-lg transition-transform duration-500 ease-in-out shadow-lg hover:scale-110 hover:-translate-y-2 active:scale-95 border backdrop-blur-sm'
             style={{
-              color: "var(--color-cream)",
-              background:
-                "linear-gradient(90deg, var(--color-secondary), var(--color-primary))",
-              borderColor: "var(--color-secondary)",
+              color: "#fff",
+              background: "#005f73",
+              borderColor: "#005f73",
             }}>
             <span className='relative z-10 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
               Start Your Success Story
@@ -455,10 +442,9 @@ const TestimonialsStats = () => {
               →
             </span>
             <div
-              className='absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ease-in-out transform group-hover:scale-105'
+              className='absolute inset-0 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 ease-in-out transform group-hover:scale-105'
               style={{
-                background:
-                  "linear-gradient(90deg, var(--color-navycream), var(--color-secondary))",
+                background: "#f1f5f9",
               }}></div>
           </button>
 
@@ -466,7 +452,7 @@ const TestimonialsStats = () => {
           <div
             className='w-1 h-3 rounded-full mt-6 mx-auto animate-pulse transition-colors duration-300 ease-in-out'
             style={{
-              backgroundColor: "var(--color-secondary)",
+              backgroundColor: " #005f73",
               opacity: 0.7,
             }}></div>
         </div>

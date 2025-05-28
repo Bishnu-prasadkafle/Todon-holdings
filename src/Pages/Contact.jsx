@@ -1,366 +1,3 @@
-// import {
-//   Mail,
-//   Phone,
-//   MapPin,
-//   Clock,
-//   Send,
-//   User,
-//   MessageSquare,
-//   Globe,
-//   ArrowRight,
-// } from "lucide-react";
-// import { useState } from "react";
-
-// const Contact = () => {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     email: "",
-//     phone: "",
-//     subject: "",
-//     message: "",
-//   });
-
-//   const [focusedField, setFocusedField] = useState("");
-//   const [isSubmitting, setIsSubmitting] = useState(false);
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setIsSubmitting(true);
-
-//     // Simulate form submission
-//     setTimeout(() => {
-//       setIsSubmitting(false);
-//       alert("Thank you for your message! We'll get back to you soon.");
-//       setFormData({
-//         name: "",
-//         email: "",
-//         phone: "",
-//         subject: "",
-//         message: "",
-//       });
-//     }, 2000);
-//   };
-
-//   const contactInfo = [
-//     {
-//       icon: Phone,
-//       title: "Phone",
-//       details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
-//       color: "from-green-500 to-emerald-600",
-//     },
-//     {
-//       icon: Mail,
-//       title: "Email",
-//       details: ["info@tondonholdings.com", "support@tondonholdings.com"],
-//       color: "from-blue-500 to-blue-600",
-//     },
-//     {
-//       icon: MapPin,
-//       title: "Address",
-//       details: ["123 Business District", "New York, NY 10001", "United States"],
-//       color: "from-purple-500 to-purple-600",
-//     },
-//     {
-//       icon: Clock,
-//       title: "Business Hours",
-//       details: [
-//         "Monday - Friday: 9:00 AM - 6:00 PM",
-//         "Saturday: 10:00 AM - 4:00 PM",
-//         "Sunday: Closed",
-//       ],
-//       color: "from-orange-500 to-red-500",
-//     },
-//   ];
-
-//   return (
-//     <div className='min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900'>
-//       {/* Hero Section */}
-//       <section className='relative pt-32 pb-20 overflow-hidden'>
-//         <div className='absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20'></div>
-//         <div className='absolute inset-0'>
-//           <div className='absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse'></div>
-//           <div className='absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000'></div>
-//         </div>
-
-//         <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center'>
-//           <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 text-white transform transition-all duration-800 hover:scale-105'>
-//             Get In{" "}
-//             <span className='text-blue-400 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text  hover:from-blue-300 hover:to-blue-500 transition-all duration-500 inline-block hover:scale-110 hover:-translate-y-1'>
-//               Touch
-//             </span>
-//           </h1>
-//           <p className='text-xl sm:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto transform transition-all duration-700 hover:text-gray-100'>
-//             Ready to transform your business? Let's discuss your project and
-//             bring your vision to life.
-//           </p>
-//         </div>
-//       </section>
-
-//       {/* Main Content */}
-//       <section className='relative py-20'>
-//         <div className='max-w-7xl mx-auto px-6 lg:px-8'>
-//           <div className='grid lg:grid-cols-2 gap-16 items-start'>
-//             {/* Contact Form */}
-//             <div className='relative'>
-//               <div className='bg-white/5 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-white/10 shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-blue-500/20'>
-//                 <div className='absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 rounded-3xl'></div>
-
-//                 <div className='relative z-10'>
-//                   <div className='flex items-center gap-4 mb-8'>
-//                     <div className='w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center transform transition-all duration-300 hover:scale-110 hover:rotate-12'>
-//                       <MessageSquare className='text-white' size={24} />
-//                     </div>
-//                     <h2 className='text-3xl font-bold text-white'>
-//                       Send Us a Message
-//                     </h2>
-//                   </div>
-
-//                   <div className='space-y-6'>
-//                     <div className='grid sm:grid-cols-2 gap-6'>
-//                       <div className='relative group'>
-//                         <User
-//                           className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-//                             focusedField === "name"
-//                               ? "text-blue-400"
-//                               : "text-gray-400"
-//                           }`}
-//                           size={20}
-//                         />
-//                         <input
-//                           type='text'
-//                           name='name'
-//                           value={formData.name}
-//                           onChange={handleInputChange}
-//                           onFocus={() => setFocusedField("name")}
-//                           onBlur={() => setFocusedField("")}
-//                           placeholder='Your Name'
-//                           required
-//                           className='w-full pl-12 pr-4 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:bg-white/10 transition-all duration-300 hover:bg-white/10'
-//                         />
-//                       </div>
-
-//                       <div className='relative group'>
-//                         <Mail
-//                           className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-//                             focusedField === "email"
-//                               ? "text-blue-400"
-//                               : "text-gray-400"
-//                           }`}
-//                           size={20}
-//                         />
-//                         <input
-//                           type='email'
-//                           name='email'
-//                           value={formData.email}
-//                           onChange={handleInputChange}
-//                           onFocus={() => setFocusedField("email")}
-//                           onBlur={() => setFocusedField("")}
-//                           placeholder='Your Email'
-//                           required
-//                           className='w-full pl-12 pr-4 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:bg-white/10 transition-all duration-300 hover:bg-white/10'
-//                         />
-//                       </div>
-//                     </div>
-
-//                     <div className='grid sm:grid-cols-2 gap-6'>
-//                       <div className='relative group'>
-//                         <Phone
-//                           className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-//                             focusedField === "phone"
-//                               ? "text-blue-400"
-//                               : "text-gray-400"
-//                           }`}
-//                           size={20}
-//                         />
-//                         <input
-//                           type='tel'
-//                           name='phone'
-//                           value={formData.phone}
-//                           onChange={handleInputChange}
-//                           onFocus={() => setFocusedField("phone")}
-//                           onBlur={() => setFocusedField("")}
-//                           placeholder='Phone Number'
-//                           className='w-full pl-12 pr-4 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:bg-white/10 transition-all duration-300 hover:bg-white/10'
-//                         />
-//                       </div>
-
-//                       <div className='relative group'>
-//                         <Globe
-//                           className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-//                             focusedField === "subject"
-//                               ? "text-blue-400"
-//                               : "text-gray-400"
-//                           }`}
-//                           size={20}
-//                         />
-//                         <input
-//                           type='text'
-//                           name='subject'
-//                           value={formData.subject}
-//                           onChange={handleInputChange}
-//                           onFocus={() => setFocusedField("subject")}
-//                           onBlur={() => setFocusedField("")}
-//                           placeholder='Subject'
-//                           required
-//                           className='w-full pl-12 pr-4 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:bg-white/10 transition-all duration-300 hover:bg-white/10'
-//                         />
-//                       </div>
-//                     </div>
-
-//                     <div className='relative group'>
-//                       <MessageSquare
-//                         className={`absolute left-4 top-6 transition-all duration-300 ${
-//                           focusedField === "message"
-//                             ? "text-blue-400"
-//                             : "text-gray-400"
-//                         }`}
-//                         size={20}
-//                       />
-//                       <textarea
-//                         name='message'
-//                         value={formData.message}
-//                         onChange={handleInputChange}
-//                         onFocus={() => setFocusedField("message")}
-//                         onBlur={() => setFocusedField("")}
-//                         placeholder='Your Message'
-//                         rows={6}
-//                         required
-//                         className='w-full pl-12 pr-4 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:bg-white/10 transition-all duration-300 hover:bg-white/10 resize-none'></textarea>
-//                     </div>
-
-//                     <button
-//                       type='submit'
-//                       disabled={isSubmitting}
-//                       className='group w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-8 py-5 rounded-xl font-semibold text-lg transition-all duration-500 shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 hover:-translate-y-2 active:scale-95 border border-blue-500/30 hover:border-blue-400/50 backdrop-blur-sm disabled:opacity-70 disabled:cursor-not-allowed'>
-//                       <div className='flex items-center justify-center gap-3'>
-//                         {isSubmitting ? (
-//                           <>
-//                             <div className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin'></div>
-//                             <span>Sending Message...</span>
-//                           </>
-//                         ) : (
-//                           <>
-//                             <Send
-//                               size={20}
-//                               className='transition-all duration-300 group-hover:translate-x-1'
-//                             />
-//                             <span>Send Message</span>
-//                             <ArrowRight
-//                               size={20}
-//                               className='transition-all duration-300 group-hover:translate-x-1'
-//                             />
-//                           </>
-//                         )}
-//                       </div>
-//                       <div className='absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 transition-all duration-500 transform group-hover:scale-105'></div>
-//                     </button>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-
-//             {/* Contact Information */}
-//             <div className='space-y-8'>
-//               {contactInfo.map((info, index) => {
-//                 const IconComponent = info.icon;
-//                 return (
-//                   <div
-//                     key={index}
-//                     className='group bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:bg-white/10'>
-//                     <div className='flex items-start gap-6'>
-//                       <div
-//                         className={`w-16 h-16 bg-gradient-to-r ${info.color} rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg`}>
-//                         <IconComponent className='text-white' size={28} />
-//                       </div>
-//                       <div className='flex-1'>
-//                         <h3 className='text-2xl font-bold text-white mb-4 group-hover:text-blue-300 transition-all duration-300'>
-//                           {info.title}
-//                         </h3>
-//                         <div className='space-y-2'>
-//                           {info.details.map((detail, detailIndex) => (
-//                             <p
-//                               key={detailIndex}
-//                               className='text-gray-300 text-lg group-hover:text-gray-200 transition-all duration-300 hover:text-blue-300 cursor-pointer'>
-//                               {detail}
-//                             </p>
-//                           ))}
-//                         </div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 );
-//               })}
-
-//               {/* Map Placeholder */}
-//               <div className='group bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:bg-white/10'>
-//                 <div className='flex items-center gap-4 mb-6'>
-//                   <div className='w-12 h-12 bg-gradient-to-r from-red-500 to-pink-600 rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6'>
-//                     <MapPin className='text-white' size={24} />
-//                   </div>
-//                   <h3 className='text-2xl font-bold text-white group-hover:text-blue-300 transition-all duration-300'>
-//                     Find Us
-//                   </h3>
-//                 </div>
-//                 <div className='bg-gradient-to-br from-blue-900/30 to-purple-900/30 rounded-xl h-64 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-all duration-300'>
-//                   <div className='text-center'>
-//                     <MapPin
-//                       className='text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-all duration-300'
-//                       size={48}
-//                     />
-//                     <p className='text-gray-300 text-lg group-hover:text-white transition-all duration-300'>
-//                       Interactive Map Integration
-//                     </p>
-//                     <p className='text-gray-400 text-sm mt-2'>
-//                       Google Maps or similar service would be embedded here
-//                     </p>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Bottom CTA Section */}
-//       <section className='relative py-20 overflow-hidden'>
-//         <div className='absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10'></div>
-//         <div className='max-w-4xl mx-auto px-6 lg:px-8 text-center'>
-//           <h2 className='text-4xl sm:text-5xl font-bold text-white mb-6 transform transition-all duration-700 hover:scale-105'>
-//             Ready to Start Your Project?
-//           </h2>
-//           <p className='text-xl text-gray-300 mb-8 transform transition-all duration-700 hover:text-gray-200'>
-//             Let's discuss how we can help transform your business with
-//             cutting-edge digital solutions.
-//           </p>
-//           <div className='flex flex-col sm:flex-row gap-6 justify-center'>
-//             <button className='group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-500 shadow-2xl hover:shadow-blue-500/25 transform hover:scale-110 hover:-translate-y-2 active:scale-95'>
-//               <span className='flex items-center justify-center gap-3'>
-//                 <Phone size={20} />
-//                 Call Now
-//               </span>
-//             </button>
-//             <button className='group border-2 border-white/30 hover:border-blue-400 text-white hover:text-blue-300 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 active:scale-95 hover:bg-white/5'>
-//               <span className='flex items-center justify-center gap-3'>
-//                 <Mail size={20} />
-//                 Email Us
-//               </span>
-//             </button>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default Contact;
 import {
   Mail,
   Phone,
@@ -373,9 +10,10 @@ import {
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Contact = () => {
+  // Form state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -383,49 +21,126 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-
   const [focusedField, setFocusedField] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Animation states
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [formVisible, setFormVisible] = useState(false);
+  const [infoVisible, setInfoVisible] = useState(false);
+  const [ctaVisible, setCtaVisible] = useState(false);
+
+  // Refs for scroll animations
+  const headerRef = useRef(null);
+  const formRef = useRef(null);
+  const infoRef = useRef(null);
+  const ctaRef = useRef(null);
+
+  // Contact information data
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Phone",
+      details: ["977 -980328559"],
+      color: "var(--color-secondary)",
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      details: ["info@tondonholdings.com", "support@tondonholdings.com"],
+      color: "var(--color-secondary)",
+    },
+    {
+      icon: MapPin,
+      title: "Location",
+      details: ["Kathmandu, Nepal"],
+      color: "var(--color-secondary)",
+    },
+    {
+      icon: Clock,
+      title: "Business Hours",
+      details: [
+        "Monday - Friday: 9:00 AM - 6:00 PM",
+        "Saturday - Sunday: Closed",
+      ],
+      color: "var(--color-secondary)",
+    },
+  ];
+
+  // Form input fields
+  const inputFields = [
+    {
+      name: "name",
+      label: "Your Name",
+      type: "text",
+      icon: User,
+      placeholder: "your full name",
+    },
+    {
+      name: "email",
+      label: "Email Address",
+      type: "email",
+      icon: Mail,
+      placeholder: "email",
+    },
+    {
+      name: "phone",
+      label: "Phone (Optional)",
+      type: "tel",
+      icon: Phone,
+      placeholder: "",
+    },
+    {
+      name: "subject",
+      label: "Subject",
+      type: "text",
+      icon: Globe,
+      placeholder: "How can we help?",
+    },
+  ];
+
+  useEffect(() => {
+    const observers = [
+      { ref: headerRef, setter: setHeaderVisible },
+      { ref: formRef, setter: setFormVisible },
+      { ref: infoRef, setter: setInfoVisible },
+      { ref: ctaRef, setter: setCtaVisible },
+    ].map(({ ref, setter }) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setter(entry.isIntersecting),
+        { threshold: 0.2 }
+      );
+      if (ref.current) observer.observe(ref.current);
+      return { observer, ref };
+    });
+
+    return () => {
+      observers.forEach(({ observer, ref }) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
+    };
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    // Clear error when user starts typing
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (formErrors[name]) {
-      setFormErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
+      setFormErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
   const validateForm = () => {
     const errors = {};
-
-    if (!formData.name.trim()) {
-      errors.name = "Name is required";
-    }
-
+    if (!formData.name.trim()) errors.name = "Name is required";
     if (!formData.email.trim()) {
       errors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = "Please enter a valid email";
     }
-
-    if (!formData.subject.trim()) {
-      errors.subject = "Subject is required";
-    }
-
-    if (!formData.message.trim()) {
-      errors.message = "Message is required";
-    }
-
+    if (!formData.subject.trim()) errors.subject = "Subject is required";
+    if (!formData.message.trim()) errors.message = "Message is required";
     return errors;
   };
 
@@ -437,10 +152,9 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setIsSubmitted(true);
       setFormData({
         name: "",
@@ -450,367 +164,231 @@ const Contact = () => {
         message: "",
       });
       setFormErrors({});
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 2000);
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Phone",
-      details: ["97-980000000", "97-980000000"],
-      color: "from-green-500 to-emerald-600",
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      details: ["info@tondonholdings.com", "support@tondonholdings.com"],
-      color: "from-blue-500 to-blue-600",
-    },
-    {
-      icon: MapPin,
-      title: "Address",
-      details: ["Kathmandu Nepal"],
-      color: "from-purple-500 to-purple-600",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: [
-        "Monday - Friday: 9:00 AM - 6:00 PM",
-        "Saturday: Closed",
-        "Sunday: Closed",
-      ],
-      color: "from-orange-500 to-red-500",
-    },
-  ];
-
   return (
-    <div className='min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-x-hidden'>
-      {/* Hero Section */}
-      <section className='relative pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 '>
-        <div className='absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20'></div>
-        <div className='absolute inset-0'>
-          <div className='absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse'></div>
-          <div className='absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000'></div>
-        </div>
+    <section className='py-10 md:py-20 overflow-hidden bg-[#f8fafc] relative'>
+      {/* Background Pattern */}
+      <div className='absolute inset-0 opacity-30 bg-pattern' />
 
-        <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center'>
-          <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 text-white transform transition-all duration-800 hover:scale-105'>
-            Get In{" "}
-            <span className='text-blue-400 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text hover:from-blue-300 hover:to-blue-500 transition-all duration-500 inline-block hover:scale-110 hover:-translate-y-1'>
+      <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        {/* Header Section */}
+        <div
+          ref={headerRef}
+          className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${
+            headerVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}>
+          <h1 className='text-4xl md:text-5xl lg:text-7xl font-bold mb-6'>
+            <span className='text-[var(--color-primary)]'>Get In </span>
+            <span className='inline-block text-[#e63946] hover:scale-110 hover:-translate-y-1 transition-all duration-700'>
               Touch
             </span>
           </h1>
-          <p className='text-xl sm:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto transform transition-all duration-700 hover:text-gray-100'>
+          <p className='text-lg md:text-xl lg:text-2xl text-[#4ade80] max-w-3xl mx-auto'>
             Ready to transform your business? Let's discuss your project and
             bring your vision to life.
           </p>
         </div>
-      </section>
 
-      {/* Success Message */}
-      {isSubmitted && (
-        <div className='fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-green-500/90 backdrop-blur-lg text-white px-8 py-4 rounded-xl shadow-2xl border border-green-400/30 animate-bounce'>
-          <div className='flex items-center gap-3'>
-            <CheckCircle size={24} />
-            <span className='font-semibold'>
-              Message sent successfully! We'll get back to you soon.
-            </span>
+        {/* Success Message */}
+        {isSubmitted && (
+          <div className='fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-green-500/90 backdrop-blur-lg text-white px-6 py-4 rounded-xl shadow-2xl border border-green-400/30 animate-bounce'>
+            <div className='flex items-center gap-2'>
+              <CheckCircle size={20} />
+              <span className='font-semibold'>Message sent successfully!</span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Main Content */}
-      <section className='relative py-20'>
-        <div className='max-w-7xl mx-auto px-6 lg:px-8'>
-          <div className='grid lg:grid-cols-2 gap-16 items-start'>
-            {/* Contact Form */}
-            <div className='relative'>
-              <div className='bg-white/5 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-white/10 shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-blue-500/20'>
-                <div className='absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 rounded-3xl'></div>
+        {/* Main Grid */}
+        <div className='grid lg:grid-cols-2 gap-8 lg:gap-16'>
+          {/* Contact Form */}
+          <div
+            ref={formRef}
+            className={`transition-all duration-1000 ${
+              formVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
+            }`}>
+            <div className='bg-white rounded-3xl p-6 lg:p-12 border border-[var(--color-navycream)] shadow-2xl hover:scale-[1.02] transition-transform duration-500'>
+              <h2 className='text-2xl md:text-3xl font-bold mb-8 text-[var(--color-primary)]'>
+                Send us a Message
+              </h2>
 
-                <div className='relative z-10'>
-                  <div className='flex items-center gap-4 mb-8'>
-                    <div className='w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center transform transition-all duration-300 hover:scale-110 hover:rotate-12'>
-                      <MessageSquare className='text-white' size={24} />
-                    </div>
-                    <h2 className='text-3xl font-bold text-white'>
-                      Send Us a Message
-                    </h2>
-                  </div>
-
-                  <div className='space-y-6'>
-                    <div className='grid sm:grid-cols-2 gap-6'>
-                      <div className='relative group'>
-                        <User
-                          className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-                            focusedField === "name"
-                              ? "text-blue-400"
-                              : "text-gray-400"
-                          }`}
-                          size={20}
-                        />
-                        <input
-                          type='text'
-                          name='name'
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          onFocus={() => setFocusedField("name")}
-                          onBlur={() => setFocusedField("")}
-                          placeholder='Your Name *'
-                          required
-                          className={`w-full pl-12 pr-4 py-4 bg-white/5 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:bg-white/10 transition-all duration-300 hover:bg-white/10 ${
-                            formErrors.name
-                              ? "border-red-400 focus:border-red-400"
-                              : "border-white/20 focus:border-blue-400"
-                          }`}
-                        />
-                        {formErrors.name && (
-                          <p className='text-red-400 text-sm mt-2 ml-2'>
-                            {formErrors.name}
-                          </p>
-                        )}
-                      </div>
-
-                      <div className='relative group'>
-                        <Mail
-                          className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-                            focusedField === "email"
-                              ? "text-blue-400"
-                              : "text-gray-400"
-                          }`}
-                          size={20}
-                        />
-                        <input
-                          type='email'
-                          name='email'
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          onFocus={() => setFocusedField("email")}
-                          onBlur={() => setFocusedField("")}
-                          placeholder='Your Email *'
-                          required
-                          className={`w-full pl-12 pr-4 py-4 bg-white/5 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:bg-white/10 transition-all duration-300 hover:bg-white/10 ${
-                            formErrors.email
-                              ? "border-red-400 focus:border-red-400"
-                              : "border-white/20 focus:border-blue-400"
-                          }`}
-                        />
-                        {formErrors.email && (
-                          <p className='text-red-400 text-sm mt-2 ml-2'>
-                            {formErrors.email}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className='grid sm:grid-cols-2 gap-6'>
-                      <div className='relative group'>
-                        <Phone
-                          className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-                            focusedField === "phone"
-                              ? "text-blue-400"
-                              : "text-gray-400"
-                          }`}
-                          size={20}
-                        />
-                        <input
-                          type='tel'
-                          name='phone'
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          onFocus={() => setFocusedField("phone")}
-                          onBlur={() => setFocusedField("")}
-                          placeholder='Phone Number'
-                          className='w-full pl-12 pr-4 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:bg-white/10 transition-all duration-300 hover:bg-white/10'
-                        />
-                      </div>
-
-                      <div className='relative group'>
-                        <Globe
-                          className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-                            focusedField === "subject"
-                              ? "text-blue-400"
-                              : "text-gray-400"
-                          }`}
-                          size={20}
-                        />
-                        <input
-                          type='text'
-                          name='subject'
-                          value={formData.subject}
-                          onChange={handleInputChange}
-                          onFocus={() => setFocusedField("subject")}
-                          onBlur={() => setFocusedField("")}
-                          placeholder='Subject *'
-                          required
-                          className={`w-full pl-12 pr-4 py-4 bg-white/5 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:bg-white/10 transition-all duration-300 hover:bg-white/10 ${
-                            formErrors.subject
-                              ? "border-red-400 focus:border-red-400"
-                              : "border-white/20 focus:border-blue-400"
-                          }`}
-                        />
-                        {formErrors.subject && (
-                          <p className='text-red-400 text-sm mt-2 ml-2'>
-                            {formErrors.subject}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className='relative group'>
-                      <MessageSquare
-                        className={`absolute left-4 top-6 transition-all duration-300 ${
-                          focusedField === "message"
-                            ? "text-blue-400"
+              <div className='space-y-6'>
+                {inputFields.map((field) => (
+                  <div key={field.name}>
+                    <label
+                      htmlFor={field.name}
+                      className='block text-sm font-medium mb-2 text-[var(--color-primary)]'>
+                      {field.label}
+                    </label>
+                    <div className='relative'>
+                      <field.icon
+                        size={20}
+                        className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
+                          focusedField === field.name
+                            ? "text-[var(--color-secondary)]"
                             : "text-gray-400"
                         }`}
-                        size={20}
                       />
-                      <textarea
-                        name='message'
-                        value={formData.message}
+                      <input
+                        type={field.type}
+                        name={field.name}
+                        id={field.name}
+                        value={formData[field.name]}
                         onChange={handleInputChange}
-                        onFocus={() => setFocusedField("message")}
+                        onFocus={() => setFocusedField(field.name)}
                         onBlur={() => setFocusedField("")}
-                        placeholder='Your Message *'
-                        rows={6}
-                        required
-                        className={`w-full pl-12 pr-4 py-4 bg-white/5 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:bg-white/10 transition-all duration-300 hover:bg-white/10 resize-none ${
-                          formErrors.message
-                            ? "border-red-400 focus:border-red-400"
-                            : "border-white/20 focus:border-blue-400"
-                        }`}></textarea>
-                      {formErrors.message && (
-                        <p className='text-red-400 text-sm mt-2 ml-2'>
-                          {formErrors.message}
+                        placeholder={field.placeholder}
+                        className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
+                          formErrors[field.name]
+                            ? "border-red-500"
+                            : "border-gray-200"
+                        } focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:ring-opacity-20 transition-all duration-300`}
+                      />
+                      {formErrors[field.name] && (
+                        <p className='mt-1 text-sm text-red-500'>
+                          {formErrors[field.name]}
                         </p>
                       )}
                     </div>
+                  </div>
+                ))}
 
-                    <button
-                      onClick={handleSubmit}
-                      disabled={isSubmitting}
-                      className='group w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-8 py-5 rounded-xl font-semibold text-lg transition-all duration-500 shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 hover:-translate-y-2 active:scale-95 border border-blue-500/30 hover:border-blue-400/50 backdrop-blur-sm disabled:opacity-70 disabled:cursor-not-allowed'>
-                      <div className='flex items-center justify-center gap-3'>
-                        {isSubmitting ? (
-                          <>
-                            <div className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin'></div>
-                            <span>Sending Message...</span>
-                          </>
-                        ) : (
-                          <>
-                            <Send
-                              size={20}
-                              className='transition-all duration-300 group-hover:translate-x-1'
-                            />
-                            <span>Send Message</span>
-                            <ArrowRight
-                              size={20}
-                              className='transition-all duration-300 group-hover:translate-x-1'
-                            />
-                          </>
-                        )}
-                      </div>
-                      <div className='absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 transition-all duration-500 transform group-hover:scale-105'></div>
-                    </button>
+                {/* Message Textarea */}
+                <div>
+                  <label
+                    htmlFor='message'
+                    className='block text-sm font-medium mb-2 text-[var(--color-primary)]'>
+                    Your Message
+                  </label>
+                  <div className='relative'>
+                    <MessageSquare
+                      size={20}
+                      className={`absolute left-3 top-4 transition-colors duration-300 ${
+                        focusedField === "message"
+                          ? "text-[var(--color-secondary)]"
+                          : "text-gray-400"
+                      }`}
+                    />
+                    <textarea
+                      name='message'
+                      id='message'
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      onFocus={() => setFocusedField("message")}
+                      onBlur={() => setFocusedField("")}
+                      placeholder='Tell us about your project...'
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
+                        formErrors.message
+                          ? "border-red-500"
+                          : "border-gray-200"
+                      } focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:ring-opacity-20 transition-all duration-300`}
+                    />
+                    {formErrors.message && (
+                      <p className='mt-1 text-sm text-red-500'>
+                        {formErrors.message}
+                      </p>
+                    )}
                   </div>
                 </div>
+
+                {/* Submit Button */}
+                <button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className='w-full py-4 px-6 rounded-xl bg-[var(--color-secondary)] text-white font-semibold flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed'>
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send size={20} />
+                    </>
+                  )}
+                </button>
               </div>
             </div>
+          </div>
 
-            {/* Contact Information */}
-            <div className='space-y-8'>
-              {contactInfo.map((info, index) => {
-                const IconComponent = info.icon;
-                return (
+          {/* Contact Information */}
+          <div
+            ref={infoRef}
+            className={`space-y-6 md:space-y-8 transition-all duration-1000 ${
+              infoVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
+            }`}>
+            {contactInfo.map((info, index) => (
+              <div
+                key={index}
+                className='group bg-[var(--color-navycream)] rounded-2xl p-6 md:p-8 border border-[var(--color-secondary)] shadow-xl hover:scale-105 hover:shadow-2xl hover:bg-white transition-all duration-500'>
+                <div className='flex items-start gap-4'>
                   <div
-                    key={index}
-                    className='group bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:bg-white/10'>
-                    <div className='flex items-start gap-6'>
-                      <div
-                        className={`w-16 h-16 bg-gradient-to-r ${info.color} rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg`}>
-                        <IconComponent className='text-white' size={28} />
-                      </div>
-                      <div className='flex-1'>
-                        <h3 className='text-2xl font-bold text-white mb-4 group-hover:text-blue-300 transition-all duration-300'>
-                          {info.title}
-                        </h3>
-                        <div className='space-y-2'>
-                          {info.details.map((detail, detailIndex) => (
-                            <p
-                              key={detailIndex}
-                              className='text-gray-300 text-lg group-hover:text-gray-200 transition-all duration-300 hover:text-blue-300 cursor-pointer'>
-                              {detail}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
+                    className='p-4 rounded-xl'
+                    style={{ backgroundColor: info.color }}>
+                    <info.icon size={24} className='text-white' />
+                  </div>
+                  <div>
+                    <h3 className='text-xl font-semibold mb-2 text-[var(--color-primary)]'>
+                      {info.title}
+                    </h3>
+                    <div className='space-y-1'>
+                      {info.details.map((detail, idx) => (
+                        <p
+                          key={idx}
+                          className='text-[var(--color-secondary)] group-hover:text-gray-600 transition-colors duration-300'>
+                          {detail}
+                        </p>
+                      ))}
                     </div>
                   </div>
-                );
-              })}
-
-              {/* Embedded Map */}
-              <div className='group bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:bg-white/10'>
-                <div className='flex items-center gap-4 mb-6'>
-                  <div className='w-12 h-12 bg-gradient-to-r from-red-500 to-pink-600 rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6'>
-                    <MapPin className='text-white' size={24} />
-                  </div>
-                  <h3 className='text-2xl font-bold text-white group-hover:text-blue-300 transition-all duration-300'>
-                    Find Us
-                  </h3>
-                </div>
-                <div className='rounded-xl overflow-hidden border border-white/10 group-hover:border-white/20 transition-all duration-300 h-64'>
-                  <iframe
-                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113032.65322787245!2d85.24373135767756!3d27.708935957714655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1748254515407!5m2!1sen!2snp'
-                    width='600'
-                    height='450'
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading='lazy'
-                    referrerPolicy='no-referrer-when-downgrade'
-                  />
                 </div>
               </div>
+            ))}
+
+            {/* Map */}
+            <div className='group bg-[var(--color-navycream)] rounded-2xl p-6 md:p-8 border border-[var(--color-secondary)] shadow-xl hover:scale-105 hover:shadow-2xl hover:bg-white transition-all duration-500'>
+              <iframe
+                title='location'
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.27776848728!2d85.29111321259504!3d27.709031933406965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1695925128811!5m2!1sen!2snp'
+                className='w-full h-[300px] rounded-xl'
+                style={{ border: 0 }}
+                allowFullScreen=''
+                loading='lazy'
+                referrerPolicy='no-referrer-when-downgrade'></iframe>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Bottom CTA Section */}
-      <section className='relative py-20 overflow-hidden'>
-        <div className='absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10'></div>
-        <div className='max-w-4xl mx-auto px-6 lg:px-8 text-center'>
-          <h2 className='text-4xl sm:text-5xl font-bold text-white mb-6 transform transition-all duration-700 hover:scale-105'>
-            Ready to Start Your Project?
-          </h2>
-          <p className='text-xl text-gray-300 mb-8 transform transition-all duration-700 hover:text-gray-200'>
-            Let's discuss how we can help transform your business with
-            cutting-edge digital solutions.
-          </p>
-          <div className='flex flex-col sm:flex-row gap-6 justify-center'>
-            <button className='group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-500 shadow-2xl hover:shadow-blue-500/25 transform hover:scale-110 hover:-translate-y-2 active:scale-95'>
-              <span className='flex items-center justify-center gap-3'>
-                <Phone size={20} />
-                Call Now
-              </span>
-            </button>
-            <button className='group border-2 border-white/30 hover:border-blue-400 text-white hover:text-blue-300 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 active:scale-95 hover:bg-white/5'>
-              <span className='flex items-center justify-center gap-3'>
-                <Mail size={20} />
-                Email Us
-              </span>
-            </button>
-          </div>
+        {/* Bottom CTA */}
+        <div
+          ref={ctaRef}
+          className={`text-center mt-12 md:mt-16 transition-all duration-1000 ${
+            ctaVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}>
+          {/* <div className='flex justify-center items-center gap-2 text-[var(--color-secondary)] hover:scale-105 transition-transform duration-300 cursor-pointer group'>
+            <span className='font-semibold'>View Our Portfolio</span>
+            <ArrowRight
+              size={20}
+              className='transform group-hover:translate-x-1 transition-transform duration-300'
+            />
+          </div> */}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

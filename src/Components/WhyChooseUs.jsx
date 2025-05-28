@@ -89,9 +89,9 @@ const WhyChooseUs = () => {
   return (
     <section
       ref={sectionRef}
-      className='py-20 overflow-hidden'
+      className='py-10 overflow-hidden'
       style={{
-        background: "var(--color-cream)",
+        background: "#f8fafc",
         position: "relative",
       }}>
       {/* Background Elements */}
@@ -103,7 +103,7 @@ const WhyChooseUs = () => {
           opacity: 0.5,
         }}></div>
 
-      <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
+      <div className='relative z-10 max-w-7xl mx-auto px-2 lg:px-4'>
         {/* Header with scroll animation */}
         <div
           className={`text-center mb-16 transition-all duration-1000 ease-out ${
