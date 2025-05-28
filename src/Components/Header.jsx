@@ -58,7 +58,7 @@ const Header = () => {
             className='text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight font-heading hover:opacity-90 transition-opacity duration-300'
             style={{ color: "#fff" }}>
             <span style={{ color: "#fff" }}>Tondon</span>{" "}
-            <span style={{ color: "#fff" }}>Holdings</span>
+            <span style={{ color: "#005f73" }}>Holdings</span>
           </Link>
 
           <div className='mobile-menu-container'>
