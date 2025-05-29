@@ -7,8 +7,27 @@ import {
   Linkedin,
   X,
 } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+
+  const quickLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const socialLinks = [
+    { Icon: Facebook, label: "Facebook", url: "#" },
+    { Icon: Instagram, label: "Instagram", url: "#" },
+    { Icon: Linkedin, label: "LinkedIn", url: "#" },
+    { Icon: X, label: "X", url: "#" },
+  ];
+
+  const isActive = (path) => location.pathname === path;
+
   return (
     <footer
       className='relative pt-12 pb-6 overflow-hidden border-t'
@@ -17,7 +36,7 @@ const Footer = () => {
         color: "var(--color-cream)",
         borderColor: "var(--color-secondary)",
       }}>
-      {/* Background Elements */}
+      {/* Background Pattern */}
       <div
         className='absolute inset-0'
         style={{
@@ -29,10 +48,8 @@ const Footer = () => {
       <div className='relative z-10 max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8'>
         {/* Company Info */}
         <div>
-          <h2
-            className='text-xl font-bold mb-4 font-heading'
-            style={{ color: "var(--color-cream)" }}>
-            <span style={{ color: "var(--color-secondary)" }}>Tondon</span>{" "}
+          <h2 className='text-xl font-bold mb-4 font-heading'>
+            <span className='text-blue-600'>Tondon</span>{" "}
             <span style={{ color: "var(--color-navycream)" }}>Holdings</span>
           </h2>
           <p
@@ -50,70 +67,30 @@ const Footer = () => {
             Quick Links
           </h3>
           <ul className='space-y-2 text-sm'>
-            <li>
-              <a
-                href='#'
-                className='transition-all duration-300'
-                style={{
-                  color: "var(--color-navycream)",
-                }}
-                onMouseOver={(e) =>
-                  (e.target.style.color = "var(--color-secondary)")
-                }
-                onMouseOut={(e) =>
-                  (e.target.style.color = "var(--color-navycream)")
-                }>
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href='#'
-                className='transition-all duration-300'
-                style={{
-                  color: "var(--color-navycream)",
-                }}
-                onMouseOver={(e) =>
-                  (e.target.style.color = "var(--color-secondary)")
-                }
-                onMouseOut={(e) =>
-                  (e.target.style.color = "var(--color-navycream)")
-                }>
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href='#'
-                className='transition-all duration-300'
-                style={{
-                  color: "var(--color-navycream)",
-                }}
-                onMouseOver={(e) =>
-                  (e.target.style.color = "var(--color-secondary)")
-                }
-                onMouseOut={(e) =>
-                  (e.target.style.color = "var(--color-navycream)")
-                }>
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href='#'
-                className='transition-all duration-300'
-                style={{
-                  color: "var(--color-navycream)",
-                }}
-                onMouseOver={(e) =>
-                  (e.target.style.color = "var(--color-secondary)")
-                }
-                onMouseOut={(e) =>
-                  (e.target.style.color = "var(--color-navycream)")
-                }>
-                Contact
-              </a>
-            </li>
+            {quickLinks.map((link) => (
+              <li key={link.name}>
+                <Link
+                  to={link.path}
+                  className='transition-all duration-300'
+                  style={{
+                    color: isActive(link.path)
+                      ? "var(--color-secondary)"
+                      : "var(--color-navycream)",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive(link.path)) {
+                      e.target.style.color = "var(--color-secondary)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive(link.path)) {
+                      e.target.style.color = "var(--color-navycream)";
+                    }
+                  }}>
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -128,19 +105,19 @@ const Footer = () => {
             <li
               className='flex items-center gap-2'
               style={{ color: "var(--color-navycream)" }}>
-              <MapPin size={16} style={{ color: "var(--color-secondary)" }} />
+              <MapPin size={16} className='text-blue-600' />
               <span>Kathmandu, Nepal</span>
             </li>
             <li
               className='flex items-center gap-2'
               style={{ color: "var(--color-navycream)" }}>
-              <Mail size={16} style={{ color: "var(--color-secondary)" }} />
+              <Mail size={16} className='text-blue-600' />
               <span>tondonholdings@gmail.com</span>
             </li>
             <li
               className='flex items-center gap-2'
               style={{ color: "var(--color-navycream)" }}>
-              <Phone size={16} style={{ color: "var(--color-secondary)" }} />
+              <Phone size={16} className='text-blue-600' />
               <span>+977-980000000</span>
             </li>
           </ul>
@@ -154,78 +131,27 @@ const Footer = () => {
             Follow Us
           </h3>
           <div className='flex gap-4'>
-            <a
-              href='#'
-              className='transition-all duration-300 p-2 rounded-lg group'
-              aria-label='Follow us on Facebook'
-              style={{
-                color: "var(--color-navycream)",
-              }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = "var(--color-secondary)")
-              }
-              onMouseOut={(e) =>
-                (e.currentTarget.style.color = "var(--color-navycream)")
-              }>
-              <Facebook
-                size={20}
-                className='group-hover:scale-110 transition-transform duration-200'
-              />
-            </a>
-            <a
-              href='#'
-              className='transition-all duration-300 p-2 rounded-lg group'
-              aria-label='Follow us on Instagram'
-              style={{
-                color: "var(--color-navycream)",
-              }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = "var(--color-secondary)")
-              }
-              onMouseOut={(e) =>
-                (e.currentTarget.style.color = "var(--color-navycream)")
-              }>
-              <Instagram
-                size={20}
-                className='group-hover:scale-110 transition-transform duration-200'
-              />
-            </a>
-            <a
-              href='#'
-              className='transition-all duration-300 p-2 rounded-lg group'
-              aria-label='Follow us on LinkedIn'
-              style={{
-                color: "var(--color-navycream)",
-              }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = "var(--color-secondary)")
-              }
-              onMouseOut={(e) =>
-                (e.currentTarget.style.color = "var(--color-navycream)")
-              }>
-              <Linkedin
-                size={20}
-                className='group-hover:scale-110 transition-transform duration-200'
-              />
-            </a>
-            <a
-              href='#'
-              className='transition-all duration-300 p-2 rounded-lg group'
-              aria-label='Follow us on X'
-              style={{
-                color: "var(--color-navycream)",
-              }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = "var(--color-secondary)")
-              }
-              onMouseOut={(e) =>
-                (e.currentTarget.style.color = "var(--color-navycream)")
-              }>
-              <X
-                size={20}
-                className='group-hover:scale-110 transition-transform duration-200'
-              />
-            </a>
+            {socialLinks.map(({ Icon, label, url }) => (
+              <a
+                key={label}
+                href={url}
+                className='transition-all duration-300 p-2 rounded-lg group'
+                aria-label={`Follow us on ${label}`}
+                style={{
+                  color: "var(--color-navycream)",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "var(--color-secondary)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "var(--color-navycream)")
+                }>
+                <Icon
+                  size={20}
+                  className='group-hover:scale-110 transition-transform duration-200'
+                />
+              </a>
+            ))}
           </div>
         </div>
       </div>

@@ -10,6 +10,11 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import FloatingWhatsApp from "./Components/FloatingWhatsApp";
 import Services from "./Components/Service/Services";
+
+// import Clothing from "./Pages/Servicepages/Clothing";
+// import Education from "./Pages/Servicepages/Education";
+// import ITSolutions from "./Pages/Servicepages/ITSolutions";
+import TourismPage from "./Pages/TourismPage";
 // import DigitalMarketing from "./Pages/Servicepages/DigitalMarketing";
 
 function App() {
@@ -19,13 +24,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='about' element={<About />} />
-        {/* <Route path='services/consulting' element={<ConsultingPage />} />
-        <Route path='services/it-services' element={<ITServicesPage />} />
-        <Route path='services/logistics' element={<Logistics />} /> */}
 
-        {/* <Route path='services/digital-marketing' element={<DigitalMarketing />} /> */}
         <Route path='contact' element={<Contact />} />
         <Route path='/Services' element={<Services />} />
+        <Route path='services/travel' element={<TourismPage />} />
+        {/* <Route path='services/clothing' element={<Clothing />} />
+        <></>
 
         {/* <Route
           path='services/digital-marketing'
