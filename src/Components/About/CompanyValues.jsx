@@ -1,305 +1,225 @@
-import React from "react";
-import { Heart, Shield, Lightbulb, Handshake, Zap, Globe } from "lucide-react";
+import {
+  Heart,
+  Shield,
+  Lightbulb,
+  Handshake,
+  Zap,
+  Globe,
+  Target,
+  Users,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-// Company Values Component
+const CORE_PRINCIPLES = [
+  {
+    label: "Authenticity",
+    value: "Be genuine in all interactions",
+    icon: Heart,
+    bgColor: "bg-blue-50",
+    iconColor: "text-blue-600",
+  },
+  {
+    label: "Quality",
+    value: "Never compromise on standards",
+    icon: Shield,
+    bgColor: "bg-green-50",
+    iconColor: "text-green-600",
+  },
+  {
+    label: "Growth",
+    value: "Continuous learning and improvement",
+    icon: Target,
+    bgColor: "bg-purple-50",
+    iconColor: "text-purple-600",
+  },
+  {
+    label: "Respect",
+    value: "Value every voice and perspective",
+    icon: Users,
+    bgColor: "bg-orange-50",
+    iconColor: "text-orange-600",
+  },
+];
+
+const VALUE_CARDS = [
+  {
+    id: 1,
+    title: "Integrity First",
+    content:
+      "We believe in doing the right thing, even when no one is watching. Our commitment to honesty and ethical practices forms the foundation of every relationship.",
+    icon: Shield,
+    bgColor: "bg-blue-100",
+    iconColor: "text-blue-600",
+  },
+  {
+    id: 2,
+    title: "Innovation Drive",
+    content:
+      "We embrace cutting-edge technologies and creative solutions to solve complex challenges, ensuring our clients stay ahead in the digital landscape.",
+    icon: Lightbulb,
+    bgColor: "bg-green-100",
+    iconColor: "text-green-600",
+  },
+  {
+    id: 3,
+    title: "Client Partnership",
+    content:
+      "We don't just work for our clients; we work with them. Building lasting partnerships through collaboration and shared success is our priority.",
+    icon: Handshake,
+    bgColor: "bg-purple-100",
+    iconColor: "text-purple-600",
+  },
+  {
+    id: 4,
+    title: "Excellence Pursuit",
+    content:
+      "We are never satisfied with 'good enough.' Our commitment to excellence drives us to deliver exceptional quality in every project.",
+    icon: Zap,
+    bgColor: "bg-orange-100",
+    iconColor: "text-orange-600",
+  },
+  {
+    id: 5,
+    title: "Inclusive Growth",
+    content:
+      "We believe in creating opportunities for everyone. Our diverse team and inclusive approach ensure better solutions and meaningful impact.",
+    icon: Heart,
+    bgColor: "bg-teal-100",
+    iconColor: "text-teal-600",
+  },
+  {
+    id: 6,
+    title: "Global Impact",
+    content:
+      "We think beyond borders and boundaries. Our solutions are designed to make a positive impact locally and globally.",
+    icon: Globe,
+    bgColor: "bg-red-100",
+    iconColor: "text-red-600",
+  },
+];
+
 const CompanyValues = () => {
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const [cardsVisible, setCardsVisible] = useState(false);
-  const [visibleCards, setVisibleCards] = useState([]);
-  const [statsVisible, setStatsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  const headerRef = useRef(null);
-  const cardsRef = useRef(null);
-  const cardRefs = useRef([]);
-  const statsRef = useRef(null);
-
-  const valueCards = [
-    {
-      id: 1,
-      title: "Integrity First",
-      content:
-        "We believe in doing the right thing, even when no one is watching. Our commitment to honesty, transparency, and ethical practices forms the foundation of every client relationship and business decision we make.",
-      icon: Shield,
-    },
-    {
-      id: 2,
-      title: "Innovation Drive",
-      content:
-        "We embrace cutting-edge technologies and creative solutions to solve complex challenges. Our passion for innovation ensures our clients stay ahead of the curve in an ever-evolving digital landscape.",
-      icon: Lightbulb,
-    },
-    {
-      id: 3,
-      title: "Client Partnership",
-      content:
-        "We don't just work for our clients; we work with them. Building lasting partnerships through collaboration, understanding, and shared success is at the heart of everything we do.",
-      icon: Handshake,
-    },
-    {
-      id: 4,
-      title: "Excellence Pursuit",
-      content:
-        "We are never satisfied with 'good enough.' Our commitment to excellence drives us to deliver exceptional quality in every project, exceeding expectations and setting new standards.",
-      icon: Zap,
-    },
-    {
-      id: 5,
-      title: "Inclusive Growth",
-      content:
-        "We believe in creating opportunities for everyone. Our diverse team and inclusive approach ensure that different perspectives drive better solutions and meaningful impact.",
-      icon: Heart,
-    },
-    {
-      id: 6,
-      title: "Global Impact",
-      content:
-        "We think beyond borders and boundaries. Our solutions are designed to make a positive impact locally and globally, contributing to a better digital future for all.",
-      icon: Globe,
-    },
-  ];
-
-  const coreValues = [
-    {
-      principle: "Authenticity",
-      description: "Be genuine in all interactions",
-    },
-    { principle: "Quality", description: "Never compromise on standards" },
-    { principle: "Growth", description: "Continuous learning and improvement" },
-    { principle: "Respect", description: "Value every voice and perspective" },
-  ];
-
-  // Intersection observers for scroll animations
   useEffect(() => {
-    const headerObserver = new IntersectionObserver(
-      ([entry]) => setHeaderVisible(entry.isIntersecting),
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.3 }
     );
-    if (headerRef.current) {
-      headerObserver.observe(headerRef.current);
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-    return () => {
-      if (headerRef.current) headerObserver.unobserve(headerRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    const cardsObserver = new IntersectionObserver(
-      ([entry]) => setCardsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (cardsRef.current) {
-      cardsObserver.observe(cardsRef.current);
-    }
-    return () => {
-      if (cardsRef.current) cardsObserver.unobserve(cardsRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    const cardObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const cardId = parseInt(entry.target.dataset.cardId);
-            setVisibleCards((prev) => [...new Set([...prev, cardId])]);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    cardRefs.current.forEach((ref) => {
-      if (ref) cardObserver.observe(ref);
-    });
 
     return () => {
-      cardRefs.current.forEach((ref) => {
-        if (ref) cardObserver.unobserve(ref);
-      });
-    };
-  }, []);
-
-  useEffect(() => {
-    const statsObserver = new IntersectionObserver(
-      ([entry]) => setStatsVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    if (statsRef.current) {
-      statsObserver.observe(statsRef.current);
-    }
-    return () => {
-      if (statsRef.current) statsObserver.unobserve(statsRef.current);
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
   return (
     <section
+      ref={sectionRef}
       className='relative py-20 overflow-hidden'
-      style={{ background: "var(--color-cream)", position: "relative" }}>
-      {/* Background Elements */}
-      <div
-        className='absolute inset-0'
-        style={{
-          background:
-            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          opacity: 0.5,
-        }}></div>
+      style={{ background: "#f8fafc" }}>
+      {/* Background Pattern */}
+      <div className='absolute inset-0 bg-pattern opacity-30' />
 
       <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
         {/* Header Section */}
         <div
-          ref={headerRef}
           className={`text-center mb-16 transition-all duration-1000 ease-out ${
-            headerVisible
+            isVisible
               ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
               : "opacity-0 translate-y-10"
           }`}>
           <h2
-            className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
-            style={{ color: "var(--color-primary)" }}>
-            Our{" "}
-            <span
-              className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
-              style={{ color: "var(--color-secondary)" }}>
-              Values
-            </span>
+            className='text-4xl lg:text-5xl font-bold mb-6'
+            style={{ color: "#1e293b" }}>
+            Our Values
           </h2>
           <p
-            className='text-xl max-w-2xl mx-auto transition-colors duration-500 ease-in-out'
-            style={{ color: "var(--color-secondary)" }}>
-            The principles that guide our every decision
+            className='text-xl max-w-2xl mx-auto leading-relaxed'
+            style={{ color: "#64748b" }}>
+            The foundational principles that guide our decisions and shape our
+            culture
           </p>
-          <div
-            className='w-24 h-1 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32'
-            style={{ backgroundColor: "var(--color-secondary)" }}></div>
         </div>
 
-        {/* Values Cards Grid */}
-        <div ref={cardsRef} className='grid lg:grid-cols-3 gap-8 mb-16'>
-          {valueCards.map((card, index) => {
+        {/* Values Grid */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}>
+          {VALUE_CARDS.map((card) => {
             const IconComponent = card.icon;
-            const isCardVisible = visibleCards.includes(card.id);
-
             return (
               <div
                 key={card.id}
-                ref={(el) => (cardRefs.current[index] = el)}
-                data-card-id={card.id}
-                className={`group rounded-2xl p-8 border transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 shadow-lg relative overflow-hidden ${
-                  isCardVisible
-                    ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
-                    : "opacity-0 translate-y-10"
-                }`}
-                style={{
-                  background: "var(--color-navycream)",
-                  borderColor: "var(--color-secondary)",
-                  transitionDelay: isCardVisible ? `${index * 200}ms` : "0ms",
-                }}>
-                {/* Icon */}
-                <div className='mb-6'>
-                  <div
-                    className='w-16 h-16 rounded-full flex items-center justify-center mx-auto transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 shadow-lg'
-                    style={{
-                      backgroundColor: "var(--color-secondary)",
-                      border: "4px solid var(--color-navycream)",
-                    }}>
-                    <IconComponent
-                      size={28}
-                      style={{
-                        color: "var(--color-cream)",
-                        transition: "color 0.5s",
-                      }}
-                    />
-                  </div>
+                className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group'>
+                <div
+                  className={`w-16 h-16 ${card.bgColor} rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <IconComponent className={`w-8 h-8 ${card.iconColor}`} />
                 </div>
-
-                {/* Title */}
                 <h3
-                  className='text-2xl font-bold mb-4 group-hover:scale-105 transition-all duration-300 text-center'
-                  style={{ color: "var(--color-primary)" }}>
+                  className='text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300'
+                  style={{ color: "#1e293b" }}>
                   {card.title}
                 </h3>
-
-                {/* Content */}
-                <p
-                  className='leading-relaxed group-hover:opacity-90 transition-all duration-300 text-center'
-                  style={{ color: "var(--color-secondary)" }}>
+                <p className='leading-relaxed' style={{ color: "#64748b" }}>
                   {card.content}
                 </p>
-
-                {/* Hover accent */}
-                <div
-                  className='absolute bottom-0 left-0 w-full h-1 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left shadow-lg'
-                  style={{ backgroundColor: "var(--color-secondary)" }}></div>
               </div>
             );
           })}
         </div>
 
-        {/* Core Values Section */}
+        {/* Core Principles Section */}
         <div
-          ref={statsRef}
-          className={`text-center rounded-2xl p-12 border transition-all duration-1000 ${
-            statsVisible
-              ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
-              : "opacity-0 translate-y-10"
-          }`}
-          style={{
-            background: "var(--color-navycream)",
-            backdropFilter: "blur(6px)",
-            borderColor: "var(--color-navycream)",
-            transitionDelay: statsVisible ? "400ms" : "0ms",
-          }}>
-          <div className='mb-8'>
-            <div
-              className='w-20 h-20 rounded-2xl mx-auto flex items-center justify-center transform transition-all duration-500 hover:scale-110 hover:rotate-12 shadow-lg'
-              style={{ backgroundColor: "var(--color-secondary)" }}>
-              <Heart
-                className='w-10 h-10'
-                style={{ color: "var(--color-cream)" }}
-              />
-            </div>
+          className={`mt-20 bg-white p-8 rounded-xl shadow-lg transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}>
+          <div className='text-center mb-10'>
+            <h3
+              className='text-3xl font-bold mb-4'
+              style={{ color: "#1e293b" }}>
+              Our Core Principles
+            </h3>
+            <p className='text-lg' style={{ color: "#64748b" }}>
+              The fundamental beliefs that drive our success
+            </p>
           </div>
 
-          <h3
-            className='text-3xl font-bold mb-4 transition-colors duration-500'
-            style={{ color: "var(--color-primary)" }}>
-            Our Core Principles
-          </h3>
-
-          <p
-            className='mb-8 max-w-2xl mx-auto text-lg transition-colors duration-500'
-            style={{ color: "var(--color-secondary)" }}>
-            The fundamental beliefs that shape our culture and drive our success
-          </p>
-
-          <div className='grid grid-cols-2 lg:grid-cols-4 gap-6'>
-            {coreValues.map((value, index) => (
-              <div
-                key={index}
-                className='group text-center transform transition-all duration-500 hover:scale-105'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
+            {CORE_PRINCIPLES.map((principle, index) => {
+              const IconComponent = principle.icon;
+              return (
                 <div
-                  className='text-xl lg:text-2xl font-bold mb-2 group-hover:scale-105 group-hover:translate-y-[-2px] transition-all duration-500'
-                  style={{ color: "var(--color-secondary)" }}>
-                  {value.principle}
+                  key={index}
+                  className='group p-6 rounded-lg hover:bg-gray-50 transition-all duration-300'>
+                  <div className='flex flex-col items-center space-y-4'>
+                    <div
+                      className={`w-12 h-12 ${principle.bgColor} rounded-lg flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}>
+                      <IconComponent
+                        className={`w-6 h-6 ${principle.iconColor}`}
+                      />
+                    </div>
+                    <div
+                      className='text-lg font-bold text-center group-hover:translate-y-[-2px] transition-all duration-300'
+                      style={{ color: "#1e293b" }}>
+                      {principle.label}
+                    </div>
+                    <div
+                      className='text-sm text-center'
+                      style={{ color: "#64748b" }}>
+                      {principle.value}
+                    </div>
+                    <div className='h-1 w-0 group-hover:w-full bg-gradient-to-r from-gray-200 to-transparent transition-all duration-300 rounded-full' />
+                  </div>
                 </div>
-                <div
-                  className='text-sm lg:text-base font-medium transition-all duration-300'
-                  style={{ color: "var(--color-primary)" }}>
-                  {value.description}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-
-          {/* Pulse Animation Line */}
-          <div
-            className='w-1 h-3 rounded-full mt-6 mx-auto animate-pulse transition-colors duration-300 ease-in-out'
-            style={{
-              backgroundColor: "var(--color-secondary)",
-              opacity: 0.7,
-            }}></div>
         </div>
       </div>
     </section>

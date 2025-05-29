@@ -1,4 +1,14 @@
-// import { Star, Quote, TrendingUp, Users, Building, Award } from "lucide-react";
+// import {
+//   Star,
+//   Quote,
+//   TrendingUp,
+//   Users,
+//   Building,
+//   Award,
+//   ArrowRight,
+//   Phone,
+//   Mail,
+// } from "lucide-react";
 // import { useEffect, useRef, useState } from "react";
 
 // const TestimonialsStats = () => {
@@ -53,24 +63,32 @@
 //       number: "10,000+",
 //       label: "Happy Clients",
 //       description: "Businesses worldwide trust our solutions",
+//       iconColor: "text-blue-600",
+//       bgColor: "bg-blue-100",
 //     },
 //     {
 //       icon: TrendingUp,
 //       number: "300%",
 //       label: "Average Growth",
 //       description: "Increase in client business efficiency",
+//       iconColor: "text-green-600",
+//       bgColor: "bg-green-100",
 //     },
 //     {
 //       icon: Building,
 //       number: "50+",
 //       label: "Countries",
 //       description: "Global presence and partnerships",
+//       iconColor: "text-purple-600",
+//       bgColor: "bg-purple-100",
 //     },
 //     {
 //       icon: Award,
 //       number: "99.9%",
 //       label: "Success Rate",
 //       description: "Project completion and satisfaction",
+//       iconColor: "text-orange-600",
+//       bgColor: "bg-orange-100",
 //     },
 //   ];
 
@@ -234,8 +252,9 @@
 //                     transitionDelay: isCardVisible ? `${index * 150}ms` : "0ms",
 //                   }}>
 //                   <div className='mb-4'>
-//                     <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto transition-all duration-500 transform hover:scale-110 hover:rotate-6'>
-//                       <IconComponent size={28} className='text-blue-600' />
+//                     <div
+//                       className={`w-16 h-16 ${stat.bgColor} rounded-full flex items-center justify-center mx-auto transition-all duration-500 transform hover:scale-110 hover:rotate-6`}>
+//                       <IconComponent size={28} className={stat.iconColor} />
 //                     </div>
 //                   </div>
 //                   <div
@@ -260,7 +279,7 @@
 //         </div>
 
 //         {/* Testimonials Section */}
-//         <div>
+//         <div className='mb-20'>
 //           <div
 //             ref={testimonialsRef}
 //             className={`text-center transition-all duration-1000 ease-out ${
@@ -352,6 +371,61 @@
 //             })}
 //           </div>
 //         </div>
+
+//         {/* CTA Section */}
+//         <div
+//           ref={ctaRef}
+//           className={`text-center transition-all duration-1000 ease-out ${
+//             ctaVisible
+//               ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
+//               : "opacity-0 translate-y-10"
+//           }`}>
+//           <div className='bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-12 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] relative overflow-hidden'>
+//             {/* Background decoration */}
+//             <div className='absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-700/20 backdrop-blur-sm'></div>
+//             <div className='absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16'></div>
+//             <div className='absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12'></div>
+
+//             <div className='relative z-10'>
+//               <h2 className='text-4xl lg:text-5xl font-bold mb-6 text-white'>
+//                 Ready to Transform Your Business?
+//               </h2>
+//               <p className='text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed mb-8'>
+//                 Join thousands of satisfied clients who have experienced
+//                 exceptional growth with Tondon Holdings. Let's discuss how we
+//                 can help you achieve your goals.
+//               </p>
+
+//               <div className='flex flex-col sm:flex-row gap-4 justify-center items-center mb-8'>
+//                 <button className='bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2 group'>
+//                   Get Started Today
+//                   <ArrowRight
+//                     size={20}
+//                     className='group-hover:translate-x-1 transition-transform duration-300'
+//                   />
+//                 </button>
+//                 <button className='border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105'>
+//                   Schedule a Consultation
+//                 </button>
+//               </div>
+
+//               <div className='flex flex-col sm:flex-row gap-6 justify-center items-center text-blue-100'>
+//                 <div className='flex items-center gap-2 hover:text-white transition-colors duration-300'>
+//                   <div className='w-10 h-10 bg-white/20 rounded-full flex items-center justify-center'>
+//                     <Phone size={18} />
+//                   </div>
+//                   <span>97-980328559</span>
+//                 </div>
+//                 <div className='flex items-center gap-2 hover:text-white transition-colors duration-300'>
+//                   <div className='w-10 h-10 bg-white/20 rounded-full flex items-center justify-center'>
+//                     <Mail size={18} />
+//                   </div>
+//                   <span>contact@tondonholdings.com</span>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
 //       </div>
 //     </section>
 //   );
@@ -370,6 +444,7 @@ import {
   Mail,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const TestimonialsStats = () => {
   const [statsVisible, setStatsVisible] = useState(false);
@@ -485,7 +560,7 @@ const TestimonialsStats = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const cardId = parseInt(entry.target.dataset.cardId);
+            const cardId = parseInt(entry.target.dataset.cardId || "0");
             setVisibleStatCards((prev) => [...new Set([...prev, cardId])]);
           }
         });
@@ -509,7 +584,7 @@ const TestimonialsStats = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const cardId = parseInt(entry.target.dataset.cardId);
+            const cardId = parseInt(entry.target.dataset.cardId || "0");
             setVisibleTestimonialCards((prev) => [
               ...new Set([...prev, cardId]),
             ]);
@@ -756,17 +831,16 @@ const TestimonialsStats = () => {
                 can help you achieve your goals.
               </p>
 
-              <div className='flex flex-col sm:flex-row gap-4 justify-center items-center mb-8'>
-                <button className='bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2 group'>
+              <div className='flex justify-center items-center mb-8'>
+                <Link
+                  to='/contact'
+                  className='bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2 group'>
                   Get Started Today
                   <ArrowRight
                     size={20}
                     className='group-hover:translate-x-1 transition-transform duration-300'
                   />
-                </button>
-                <button className='border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105'>
-                  Schedule a Consultation
-                </button>
+                </Link>
               </div>
 
               <div className='flex flex-col sm:flex-row gap-6 justify-center items-center text-blue-100'>

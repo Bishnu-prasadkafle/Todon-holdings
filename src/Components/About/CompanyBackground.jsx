@@ -1,263 +1,166 @@
-// import React from "react";
-// import { Target } from "lucide-react";
-
-// // Company Background Component
-// const CompanyBackground = () => {
-//   return (
-//     <section
-//       className='relative py-20 overflow-hidden'
-//       style={{ background: "var(--color-cream)" }}>
-//       {/* Background Elements */}
-//       <div
-//         className='absolute inset-0'
-//         style={{
-//           background:
-//             "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-//           opacity: 0.5,
-//         }}></div>
-
-//       <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
-//         <div className='text-center mb-16'>
-//           <h2
-//             className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
-//             style={{ color: "var(--color-primary)" }}>
-//             Our{" "}
-//             <span
-//               className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
-//               style={{
-//                 background:
-//                   "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
-//                 WebkitBackgroundClip: "text",
-//                 WebkitTextFillColor: "transparent",
-//                 backgroundClip: "text",
-//                 color: "transparent",
-//               }}>
-//               Story
-//             </span>
-//           </h2>
-//           <div
-//             className='w-24 h-1 mx-auto rounded-full transform transition-all duration-500 hover:w-32'
-//             style={{
-//               background:
-//                 "linear-gradient(90deg, var(--color-secondary), var(--color-navycream))",
-//             }}></div>
-//         </div>
-
-//         <div className='grid lg:grid-cols-2 gap-12 items-center'>
-//           <div className='space-y-8 transform transition-all duration-700 hover:translate-x-2'>
-//             <div
-//               className='backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 group'
-//               style={{
-//                 background: "rgba(255,255,255,0.10)",
-//                 borderColor: "var(--color-navycream)",
-//               }}>
-//               <h3
-//                 className='text-2xl font-bold mb-4 group-hover:scale-105 transition-all duration-300'
-//                 style={{
-//                   color: "var(--color-primary)",
-//                 }}>
-//                 Our Origin
-//               </h3>
-//               <p
-//                 className='leading-relaxed group-hover:opacity-90 transition-all duration-300'
-//                 style={{ color: "var(--color-secondary)" }}>
-//                 Founded in 2018,{" "}
-//                 <strong style={{ color: "var(--color-secondary)" }}>
-//                   Tondon Holdings
-//                 </strong>{" "}
-//                 emerged from a simple yet powerful observation: businesses of
-//                 all sizes deserved access to cutting-edge digital solutions.
-//                 What began as a small team of passionate developers has grown
-//                 into a comprehensive digital transformation partner.
-//               </p>
-//             </div>
-
-//             <div
-//               className='backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 group'
-//               style={{
-//                 background: "rgba(255,255,255,0.10)",
-//                 borderColor: "var(--color-navycream)",
-//               }}>
-//               <h3
-//                 className='text-2xl font-bold mb-4 group-hover:scale-105 transition-all duration-300'
-//                 style={{
-//                   color: "var(--color-primary)",
-//                 }}>
-//                 Our Vision
-//               </h3>
-//               <p
-//                 className='leading-relaxed group-hover:opacity-90 transition-all duration-300'
-//                 style={{ color: "var(--color-secondary)" }}>
-//                 To be the leading catalyst for business digital transformation,
-//                 making cutting-edge web and digital solutions accessible to
-//                 every business, regardless of size or industry.
-//               </p>
-//             </div>
-
-//             <div
-//               className='backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 group'
-//               style={{
-//                 background: "rgba(255,255,255,0.10)",
-//                 borderColor: "var(--color-navycream)",
-//               }}>
-//               <h3
-//                 className='text-2xl font-bold mb-4 group-hover:scale-105 transition-all duration-300'
-//                 style={{
-//                   color: "var(--color-primary)",
-//                 }}>
-//                 Our Mission
-//               </h3>
-//               <p
-//                 className='leading-relaxed group-hover:opacity-90 transition-all duration-300'
-//                 style={{ color: "var(--color-secondary)" }}>
-//                 "Empowering businesses with modern web and digital solutions to
-//                 thrive online." We believe every business deserves a powerful
-//                 digital presence that reflects their unique value and drives
-//                 meaningful growth.
-//               </p>
-//             </div>
-//           </div>
-
-//           <div className='relative transform transition-all duration-700 hover:scale-105'>
-//             <div
-//               className='relative rounded-3xl p-8 backdrop-blur-sm border transition-all duration-500'
-//               style={{
-//                 background:
-//                   "linear-gradient(135deg, var(--color-navycream) 60%, var(--color-secondary) 100%)",
-//                 borderColor: "var(--color-secondary)",
-//               }}>
-//               <div
-//                 className='absolute -top-4 -right-4 w-24 h-24 rounded-full opacity-20 animate-pulse'
-//                 style={{
-//                   background:
-//                     "linear-gradient(135deg, var(--color-secondary), var(--color-navycream))",
-//                 }}></div>
-//               <div className='text-center space-y-6'>
-//                 <div
-//                   className='w-20 h-20 rounded-2xl mx-auto flex items-center justify-center transform transition-all duration-500 hover:scale-110 hover:rotate-12'
-//                   style={{
-//                     background:
-//                       "linear-gradient(135deg, var(--color-secondary), var(--color-primary))",
-//                   }}>
-//                   <Target
-//                     className='w-10 h-10'
-//                     style={{ color: "var(--color-cream)" }}
-//                   />
-//                 </div>
-//                 <h4
-//                   className='text-2xl font-bold'
-//                   style={{ color: "var(--color-cream)" }}>
-//                   150+ Projects
-//                 </h4>
-//                 <p style={{ color: "var(--color-secondary)" }}>
-//                   Successfully delivered across various industries
-//                 </p>
-//                 <div className='grid grid-cols-2 gap-4 mt-8'>
-//                   <div className='text-center'>
-//                     <div
-//                       className='text-2xl font-bold'
-//                       style={{ color: "var(--color-secondary)" }}>
-//                       98%
-//                     </div>
-//                     <div
-//                       className='text-sm'
-//                       style={{ color: "var(--color-navycream)" }}>
-//                       Client Satisfaction
-//                     </div>
-//                   </div>
-//                   <div className='text-center'>
-//                     <div
-//                       className='text-2xl font-bold'
-//                       style={{ color: "var(--color-secondary)" }}>
-//                       50+
-//                     </div>
-//                     <div
-//                       className='text-sm'
-//                       style={{ color: "var(--color-navycream)" }}>
-//                       Active Partners
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-// export default CompanyBackground;
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Target, Users, Award, TrendingUp } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 
-// Company Background Component
+const STORY_CARDS = [
+  {
+    id: 1,
+    title: "Our Origin",
+    content:
+      "Founded in 2018, Tondon Holdings was born from a bold vision to revolutionize how businesses embrace digital transformation across diverse sectors—including tourism, education, clothing, and technology. Initially launched by a small, passionate team of innovators, the company has since grown into a full-fledged, multidisciplinary solutions provider. With a strong commitment to innovation, Tondon Holdings leverages emerging technologies, data-driven strategies, and industry insights to help businesses modernize their operations, elevate customer engagement, and stay ahead in an ever-evolving digital landscape. From developing smart digital platforms for tourism experiences to crafting e-learning ecosystems, fashion-tech solutions, and advanced tech infrastructure, Tondon Holdings empowers organizations to unlock new possibilities and drive sustainable growth in the digital era.",
+    icon: Target,
+    image:
+      "https://images.unsplash.com/photo-1675434303097-210c75b61d3f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fG9mZmljZXMlMjBvcmlnaW58ZW58MHwxfDB8fHww",
+    reversed: false,
+    color: "bg-blue-50",
+  },
+  {
+    id: 2,
+    title: "Our Vision",
+    content:
+      "Our vision is to be the foremost catalyst for business evolution in the digital age, driving transformative change by making innovative, technology-driven solutions accessible to every business—whether in clothing, education, tourism, or other industries—regardless of their size or stage of growth. We strive to empower organizations across these diverse sectors to fully embrace digital transformation, leveraging the latest advancements in technology to streamline operations, enhance customer experiences, and unlock new revenue streams. By providing tailored, industry-specific solutions that bridge the gap between complex digital tools and everyday business needs, we aim to democratize innovation and enable sustainable, long-term growth for businesses worldwide. Our commitment is to foster a future where every business, from startups to established enterprises in technology, clothing, education, and tourism, can confidently navigate and lead in the evolving digital landscape.",
+    icon: TrendingUp,
+    image:
+      "https://plus.unsplash.com/premium_photo-1661757403301-ae68e1f1b827?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fG9mZmljZXN8ZW58MHwxfDB8fHww",
+    reversed: true,
+    color: "bg-emerald-50",
+  },
+  {
+    id: 3,
+    title: "Our Mission",
+    content:
+      "At the core of our mission is empowering businesses with transformative solutions that seamlessly bridge the gap between traditional and digital business models. We understand that the transition to digital can be complex, so we provide tailored strategies and innovative technologies that help organizations adapt, evolve, and thrive in today’s fast-paced digital environment. By crafting powerful digital presences—whether through engaging websites, intuitive platforms, or integrated systems—we enable businesses to enhance their brand visibility, improve customer engagement, and unlock new opportunities for sustainable growth. Our approach is rooted in combining creativity with cutting-edge technology to deliver solutions that not only meet current market demands but also future-proof businesses for ongoing succes",
+    icon: Award,
+    image:
+      "https://plus.unsplash.com/premium_photo-1723579445566-cb2e884ae329?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1pc3Npb258ZW58MHx8MHx8fDA%3D",
+    reversed: false,
+    color: "bg-purple-50",
+  },
+];
+
+const STATS_DATA = [
+  { number: "150+", label: "Projects Delivered" },
+  { number: "98%", label: "Client Satisfaction" },
+  { number: "50+", label: "Active Partners" },
+  { number: "6", label: "Years Excellence" },
+];
+
+const Header = ({ headerRef, headerVisible }) => (
+  <div
+    ref={headerRef}
+    className={`text-center mb-24 transition-all duration-1000 ${
+      headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}>
+    <h2 className='text-4xl lg:text-5xl font-bold mb-8 text-gray-800'>
+      <span className='text-gray-800'>WHAT WE </span>
+      <span className='text-gray-800 inline-block hover:scale-110 hover:-translate-y-1 transition-all duration-500'>
+        EXIT
+      </span>
+    </h2>
+    <p className='text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed text-gray-600'>
+      Transforming businesses through innovation and dedication since 2018
+    </p>
+    <div className='w-32 h-1 mx-auto mt-8 rounded-full bg-gray-600 hover:w-40 transition-all duration-500' />
+  </div>
+);
+
+const StoryCard = ({ card, isVisible, index, cardRef }) => {
+  const IconComponent = card.icon;
+
+  return (
+    <div
+      ref={cardRef}
+      data-card-id={card.id}
+      className={`transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+      style={{ transitionDelay: isVisible ? `${index * 200}ms` : "0ms" }}>
+      <div
+        className={`grid lg:grid-cols-2 gap-16 items-center ${
+          card.reversed ? "lg:grid-flow-col-dense" : ""
+        }`}>
+        {/* Image Section */}
+        <div
+          className={`${card.reversed ? "lg:col-start-2" : ""} relative group`}>
+          <div className='overflow-hidden rounded-3xl shadow-lg transition-all duration-500 group-hover:shadow-2xl'>
+            <img
+              src={card.image}
+              alt={card.title}
+              className='w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105'
+            />
+            <div className='absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500' />
+          </div>
+          <div
+            className={`absolute -top-8 -right-8 w-20 h-20 ${card.color} rounded-3xl shadow-lg flex items-center justify-center transform rotate-3 group-hover:rotate-12 transition-all duration-500`}>
+            <IconComponent size={32} className='text-gray-600' />
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div
+          className={`${
+            card.reversed ? "lg:col-start-1" : ""
+          } p-10 rounded-3xl transition-all duration-500 hover:bg-white/80 backdrop-blur-sm group`}>
+          <h3 className='text-3xl font-bold mb-4 text-gray-800 group-hover:translate-x-2 transition-transform duration-300'>
+            {card.title}
+          </h3>
+          <p className='text-base leading-relaxed text-gray-600'>
+            {card.content}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Stats = ({ statsRef, statsVisible }) => (
+  <div
+    ref={statsRef}
+    className={`mt-32 rounded-3xl p-16 bg-white/80 backdrop-blur-sm transition-all duration-1000 ${
+      statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}>
+    <div className='grid grid-cols-2 lg:grid-cols-4 gap-12'>
+      {STATS_DATA.map((stat, index) => (
+        <div
+          key={index}
+          className='text-center group hover:scale-105 transition-all duration-500'>
+          <div className='text-4xl lg:text-5xl font-bold mb-4 text-gray-800'>
+            {stat.number}
+          </div>
+          <div className='text-base font-medium text-gray-600'>
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 const CompanyBackground = () => {
   const [headerVisible, setHeaderVisible] = useState(false);
-  const [cardsVisible, setCardsVisible] = useState(false);
   const [visibleCards, setVisibleCards] = useState([]);
   const [statsVisible, setStatsVisible] = useState(false);
 
   const headerRef = useRef(null);
-  const cardsRef = useRef(null);
   const cardRefs = useRef([]);
   const statsRef = useRef(null);
 
-  const storyCards = [
-    {
-      id: 1,
-      title: "Our Origin",
-      content:
-        "Founded in 2018, Tondon Holdings emerged from a simple yet powerful observation: businesses of all sizes deserved access to cutting-edge digital solutions. What began as a small team of passionate developers has grown into a comprehensive digital transformation partner.",
-      icon: Target,
-    },
-    {
-      id: 2,
-      title: "Our Vision",
-      content:
-        "To be the leading catalyst for business digital transformation, making cutting-edge web and digital solutions accessible to every business, regardless of size or industry.",
-      icon: TrendingUp,
-    },
-    {
-      id: 3,
-      title: "Our Mission",
-      content:
-        "Empowering businesses with modern web and digital solutions to thrive online. We believe every business deserves a powerful digital presence that reflects their unique value and drives meaningful growth.",
-      icon: Award,
-    },
-  ];
-
-  const companyStats = [
-    { number: "150+", label: "Projects Delivered" },
-    { number: "98%", label: "Client Satisfaction" },
-    { number: "50+", label: "Active Partners" },
-    { number: "6", label: "Years Excellence" },
-  ];
-
-  // Intersection observers for scroll animations
   useEffect(() => {
-    const headerObserver = new IntersectionObserver(
-      ([entry]) => setHeaderVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    if (headerRef.current) {
-      headerObserver.observe(headerRef.current);
-    }
-    return () => {
-      if (headerRef.current) headerObserver.unobserve(headerRef.current);
-    };
-  }, []);
+    const observers = [
+      { ref: headerRef, setter: setHeaderVisible },
+      { ref: statsRef, setter: setStatsVisible },
+    ].map(({ ref, setter }) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setter(entry.isIntersecting),
+        { threshold: 0.3 }
+      );
+      if (ref.current) observer.observe(ref.current);
+      return { observer, ref };
+    });
 
-  useEffect(() => {
-    const cardsObserver = new IntersectionObserver(
-      ([entry]) => setCardsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (cardsRef.current) {
-      cardsObserver.observe(cardsRef.current);
-    }
     return () => {
-      if (cardsRef.current) cardsObserver.unobserve(cardsRef.current);
+      observers.forEach(({ observer, ref }) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
     };
   }, []);
 
@@ -285,187 +188,38 @@ const CompanyBackground = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const statsObserver = new IntersectionObserver(
-      ([entry]) => setStatsVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    if (statsRef.current) {
-      statsObserver.observe(statsRef.current);
-    }
-    return () => {
-      if (statsRef.current) statsObserver.unobserve(statsRef.current);
-    };
-  }, []);
-
   return (
     <section
-      className='relative py-20 overflow-hidden'
-      style={{ background: "var(--color-cream)", position: "relative" }}>
-      {/* Background Elements */}
+      className='relative py-24 overflow-hidden'
+      style={{
+        background: "#f8fafc",
+      }}>
+      {/* Dotted subtle background */}
       <div
         className='absolute inset-0'
         style={{
           background:
-            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          opacity: 0.5,
-        }}></div>
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          opacity: 0.3,
+        }}
+      />
 
       <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
-        {/* Header Section */}
-        <div
-          ref={headerRef}
-          className={`text-center mb-16 transition-all duration-1000 ease-out ${
-            headerVisible
-              ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
-              : "opacity-0 translate-y-10"
-          }`}>
-          <h2
-            className='text-4xl lg:text-5xl font-bold mb-6 transform transition-all duration-700 hover:scale-105'
-            style={{ color: "var(--color-primary)" }}>
-            Our{" "}
-            <span
-              className='inline-block transition-all duration-700 ease-in-out hover:scale-110 hover:-translate-y-1'
-              style={{ color: "var(--color-secondary)" }}>
-              Story
-            </span>
-          </h2>
-          <p
-            className='text-xl max-w-2xl mx-auto transition-colors duration-500 ease-in-out'
-            style={{ color: "var(--color-secondary)" }}>
-            Building digital excellence since 2018
-          </p>
-          <div
-            className='w-24 h-1 mx-auto mt-6 rounded-full transform transition-all duration-500 hover:w-32'
-            style={{ backgroundColor: "var(--color-secondary)" }}></div>
+        <Header headerRef={headerRef} headerVisible={headerVisible} />
+
+        <div className='space-y-32'>
+          {STORY_CARDS.map((card, index) => (
+            <StoryCard
+              key={card.id}
+              card={card}
+              isVisible={visibleCards.includes(card.id)}
+              index={index}
+              cardRef={(el) => (cardRefs.current[index] = el)}
+            />
+          ))}
         </div>
 
-        {/* Story Cards Grid */}
-        <div ref={cardsRef} className='grid lg:grid-cols-3 gap-8 mb-16'>
-          {storyCards.map((card, index) => {
-            const IconComponent = card.icon;
-            const isCardVisible = visibleCards.includes(card.id);
-
-            return (
-              <div
-                key={card.id}
-                ref={(el) => (cardRefs.current[index] = el)}
-                data-card-id={card.id}
-                className={`group rounded-2xl p-8 border transition-all duration-1000 transform hover:scale-105 hover:-translate-y-3 shadow-lg relative overflow-hidden ${
-                  isCardVisible
-                    ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
-                    : "opacity-0 translate-y-10"
-                }`}
-                style={{
-                  background: "var(--color-navycream)",
-                  borderColor: "var(--color-secondary)",
-                  transitionDelay: isCardVisible ? `${index * 200}ms` : "0ms",
-                }}>
-                {/* Icon */}
-                <div className='mb-6'>
-                  <div
-                    className='w-16 h-16 rounded-full flex items-center justify-center mx-auto transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 shadow-lg'
-                    style={{
-                      backgroundColor: "var(--color-secondary)",
-                      border: "4px solid var(--color-navycream)",
-                    }}>
-                    <IconComponent
-                      size={28}
-                      style={{
-                        color: "var(--color-cream)",
-                        transition: "color 0.5s",
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3
-                  className='text-2xl font-bold mb-4 group-hover:scale-105 transition-all duration-300 text-center'
-                  style={{ color: "var(--color-primary)" }}>
-                  {card.title}
-                </h3>
-
-                {/* Content */}
-                <p
-                  className='leading-relaxed group-hover:opacity-90 transition-all duration-300 text-center'
-                  style={{ color: "var(--color-secondary)" }}>
-                  {card.content}
-                </p>
-
-                {/* Hover accent */}
-                <div
-                  className='absolute bottom-0 left-0 w-full h-1 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 origin-left shadow-lg'
-                  style={{ backgroundColor: "var(--color-secondary)" }}></div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Company Stats Section */}
-        <div
-          ref={statsRef}
-          className={`text-center rounded-2xl p-12 border transition-all duration-1000 ${
-            statsVisible
-              ? "opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-8"
-              : "opacity-0 translate-y-10"
-          }`}
-          style={{
-            background: "rgba(255,255,255,0.05)",
-            backdropFilter: "blur(6px)",
-            borderColor: "var(--color-navycream)",
-            transitionDelay: statsVisible ? "400ms" : "0ms",
-          }}>
-          <div className='mb-8'>
-            <div
-              className='w-20 h-20 rounded-2xl mx-auto flex items-center justify-center transform transition-all duration-500 hover:scale-110 hover:rotate-12 shadow-lg'
-              style={{ backgroundColor: "var(--color-secondary)" }}>
-              <Users
-                className='w-10 h-10'
-                style={{ color: "var(--color-cream)" }}
-              />
-            </div>
-          </div>
-
-          <h3
-            className='text-3xl font-bold mb-4 transition-colors duration-500'
-            style={{ color: "var(--color-primary)" }}>
-            Our Journey in Numbers
-          </h3>
-
-          <p
-            className='mb-8 max-w-2xl mx-auto text-lg transition-colors duration-500'
-            style={{ color: "var(--color-secondary)" }}>
-            Years of dedication, growth, and client success
-          </p>
-
-          <div className='grid grid-cols-2 lg:grid-cols-4 gap-6'>
-            {companyStats.map((stat, index) => (
-              <div
-                key={index}
-                className='group text-center transform transition-all duration-500 hover:scale-105'>
-                <div
-                  className='text-3xl lg:text-4xl font-bold mb-2 group-hover:scale-105 group-hover:translate-y-[-2px] transition-all duration-500'
-                  style={{ color: "var(--color-secondary)" }}>
-                  {stat.number}
-                </div>
-                <div
-                  className='text-sm lg:text-base font-medium transition-all duration-300'
-                  style={{ color: "var(--color-primary)" }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Pulse Animation Line */}
-          <div
-            className='w-1 h-3 rounded-full mt-6 mx-auto animate-pulse transition-colors duration-300 ease-in-out'
-            style={{
-              backgroundColor: "var(--color-secondary)",
-              opacity: 0.7,
-            }}></div>
-        </div>
+        <Stats statsRef={statsRef} statsVisible={statsVisible} />
       </div>
     </section>
   );
