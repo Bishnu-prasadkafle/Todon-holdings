@@ -11,30 +11,26 @@ import Contact from "./Pages/Contact";
 import FloatingWhatsApp from "./Components/FloatingWhatsApp";
 import Services from "./Components/Service/Services";
 
-// import Clothing from "./Pages/Servicepages/Clothing";
-// import Education from "./Pages/Servicepages/Education";
-// import ITSolutions from "./Pages/Servicepages/ITSolutions";
+import Clothing from "./Pages/Clothing";
+import Education from "./Pages/Education";
+import ITSolutions from "./Pages/ITSolutions";
 import TourismPage from "./Pages/TourismPage";
-// import DigitalMarketing from "./Pages/Servicepages/DigitalMarketing";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   return (
     <>
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='about' element={<About />} />
-
         <Route path='contact' element={<Contact />} />
         <Route path='/Services' element={<Services />} />
         <Route path='services/travel' element={<TourismPage />} />
-        {/* <Route path='services/clothing' element={<Clothing />} />
-        <></>
-
-        {/* <Route
-          path='services/digital-marketing'
-          element={<DigitalMarketing />}
-        /> */}
+        <Route path='services/Education' element={<Education />} />
+        <Route path='services/clothing' element={<Clothing />} />
+        <Route path='services/it-solutions' element={<ITSolutions />} />
       </Routes>
       <Footer />
       <FloatingWhatsApp />

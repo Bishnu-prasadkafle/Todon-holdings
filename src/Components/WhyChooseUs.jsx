@@ -6,7 +6,10 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
+      ([entry]) => {
+        console.log("Is visible?", entry.isIntersecting);
+        setIsVisible(entry.isIntersecting);
+      },
       { threshold: 0.3 }
     );
     if (sectionRef.current) {

@@ -8,7 +8,7 @@
 }
 
 /* Optional: Utility classes if you want to use them in className */
-.header-bg {
+/* .header-bg {
   background-color: var(--color-primary);
 }
 .header-text {
@@ -47,4 +47,4 @@
   .md\:space-y-8 > * + * {
     margin-top: 2rem;
   }
-}
+} */

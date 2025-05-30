@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import Herocard from "../Components/Service/Herocard";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Plane,
   MapPin,
@@ -6,7 +7,6 @@ import {
   Clock,
   Users,
   Star,
-  ArrowRight,
   Phone,
   Mail,
   Globe,
@@ -16,6 +16,21 @@ import {
 
 const TourismPage = () => {
   const [activeService, setActiveService] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
 
   const services = [
     {
@@ -63,9 +78,8 @@ const TourismPage = () => {
 
   const destinations = [
     {
-      name: "Maldives Paradise",
-      image:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      name: "Maldives Pa",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
       price: "From $2,999",
       rating: 4.9,
       reviews: 127,
@@ -73,8 +87,7 @@ const TourismPage = () => {
     },
     {
       name: "Bali Retreat",
-      image:
-        "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1",
       price: "From $1,899",
       rating: 4.8,
       reviews: 89,
@@ -82,8 +95,7 @@ const TourismPage = () => {
     },
     {
       name: "Santorini Dreams",
-      image:
-        "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e",
       price: "From $2,599",
       rating: 4.9,
       reviews: 156,
@@ -98,274 +110,247 @@ const TourismPage = () => {
     { number: "24/7", label: "Customer Support" },
   ];
 
+  const features = [
+    {
+      icon: Award,
+      title: "15+ Years of Excellence",
+      description: "Established travel company with proven track record",
+    },
+    {
+      icon: Users,
+      title: "Expert Travel Consultants",
+      description: "Professional team with extensive global knowledge",
+    },
+    {
+      icon: Shield,
+      title: "Secure & Reliable",
+      description: "Licensed agency with comprehensive insurance",
+    },
+  ];
+
   return (
-    <div className='min-h-screen bg-white'>
-      {/* Hero Section */}
-      <div className='bg-blue-600'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-            <div className='text-white'>
-              <div className='flex items-center mb-6'>
-                <Plane className='w-8 h-8 mr-3 text-blue-200' />
-                <h1 className='text-4xl lg:text-5xl font-bold'>
-                  Travel & Tourism
-                </h1>
-              </div>
-              <p className='text-xl mb-6 text-blue-100 leading-relaxed'>
-                Discover the joy of travel with curated experiences that blend
-                comfort, adventure, and culture. At Tondon Holdings, our travel
-                services cater to every kind of explorer — from solo adventurers
-                to family vacations.
-              </p>
-              <p className='text-lg mb-8 text-blue-200'>
-                We handle everything from flight bookings and accommodations to
-                guided tours and visa assistance, ensuring a seamless, enriching
-                journey wherever you go.
-              </p>
-              <button className='bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 flex items-center shadow-lg'>
-                Learn More <ArrowRight className='ml-2 w-5 h-5' />
-              </button>
-            </div>
-            <div className='relative'>
-              <div className='rounded-xl overflow-hidden shadow-2xl'>
-                <img
-                  src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-                  alt='Tropical Paradise'
-                  className='w-full h-96 object-cover'
-                />
-              </div>
-              <div className='absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border'>
-                <div className='flex items-center mb-2'>
-                  <Award className='w-5 h-5 text-blue-600 mr-2' />
-                  <span className='font-semibold text-gray-900'>
-                    Certified Travel Partner
-                  </span>
-                </div>
-                <div className='flex items-center'>
-                  <Star className='w-4 h-4 text-yellow-400 fill-current' />
-                  <span className='ml-2 text-sm text-gray-600'>
-                    4.9/5 from 1000+ reviews
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <>
+      <Herocard
+        heading='Tours & Travels'
+        description='Discover the joy of travel with curated experiences that blend
+              comfort, adventure, and culture.'
+        image='https://images.unsplash.com/photo-1748223341494-86fb07ff110b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8'
+      />
 
-      {/* Stats Section */}
-      <div className='bg-gray-50 py-16'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
-            {stats.map((stat, index) => (
-              <div key={index} className='text-center'>
-                <div className='text-3xl lg:text-4xl font-bold text-blue-600 mb-2'>
-                  {stat.number}
-                </div>
-                <div className='text-gray-600'>{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <section
+        ref={sectionRef}
+        className='relative py-10 overflow-hidden'
+        style={{
+          background: "#f8fafc",
+          minHeight: "100vh",
+        }}>
+        {/* Background Pattern */}
+        <div
+          className='absolute inset-0'
+          style={{
+            background:
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+            opacity: 0.3,
+          }}></div>
 
-      {/* Services Section */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20'>
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl lg:text-4xl font-bold text-gray-900 mb-4'>
-            Our Professional Services
-          </h2>
-          <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
-            Comprehensive travel solutions designed to make your journey
-            seamless and memorable
-          </p>
-        </div>
+        <div className='relative z-10 max-w-7xl mx-auto px-2 lg:px-4'>
+          {/* Hero Section */}
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className='bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100'
-              onMouseEnter={() => setActiveService(index)}
-              onMouseLeave={() => setActiveService(null)}>
-              <div className='bg-blue-600 w-14 h-14 rounded-lg flex items-center justify-center text-white mb-6'>
-                {service.icon}
-              </div>
-              <h3 className='text-xl font-bold text-gray-900 mb-3'>
-                {service.title}
-              </h3>
-              <p className='text-gray-600 mb-4 leading-relaxed'>
-                {service.description}
-              </p>
-
-              <div
-                className={`transition-all duration-300 ${
-                  activeService === index
-                    ? "max-h-32 opacity-100"
-                    : "max-h-0 opacity-0"
-                } overflow-hidden`}>
-                <ul className='space-y-2 pt-2'>
-                  {service.features.map((feature, idx) => (
-                    <li
-                      key={idx}
-                      className='flex items-center text-sm text-gray-700'>
-                      <CheckCircle className='w-4 h-4 text-blue-600 mr-2' />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Featured Destinations */}
-      <div className='bg-gray-50 py-20'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='text-center mb-16'>
-            <h2 className='text-3xl lg:text-4xl font-bold text-gray-900 mb-4'>
-              Popular Destinations
-            </h2>
-            <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
-              Explore our handpicked destinations for unforgettable experiences
-            </p>
-          </div>
-
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            {destinations.map((dest, index) => (
+          {/* Services Section */}
+          <div
+            className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 ease-out transform ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+            }`}
+            style={{
+              transitionDelay: isVisible ? "0.2s" : "0s",
+            }}>
+            {services.map((service, index) => (
               <div
                 key={index}
-                className='bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300'>
-                <div className='relative'>
-                  <img
-                    src={dest.image}
-                    alt={dest.name}
-                    className='w-full h-64 object-cover'
-                  />
-                  <div className='absolute top-4 right-4 bg-white px-3 py-1 rounded-full shadow-md'>
-                    <div className='flex items-center'>
-                      <Star className='w-4 h-4 text-yellow-400 fill-current' />
-                      <span className='ml-1 text-sm font-semibold'>
-                        {dest.rating}
-                      </span>
-                    </div>
-                  </div>
-                  <div className='absolute bottom-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium'>
-                    {dest.duration}
-                  </div>
+                className='group bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-1'
+                onMouseEnter={() => setActiveService(index)}
+                onMouseLeave={() => setActiveService(null)}>
+                <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-200 transition-colors duration-300'>
+                  {service.icon}
                 </div>
-                <div className='p-6'>
-                  <h3 className='text-xl font-bold text-gray-900 mb-3'>
-                    {dest.name}
-                  </h3>
-                  <div className='flex justify-between items-center mb-4'>
-                    <span className='text-2xl font-bold text-blue-600'>
-                      {dest.price}
-                    </span>
-                    <span className='text-sm text-gray-500'>
-                      ({dest.reviews} reviews)
-                    </span>
-                  </div>
-                  <button className='w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-colors duration-300'>
-                    View Details
-                  </button>
-                </div>
+                <h3 className='text-2xl font-bold mb-4 text-slate-800'>
+                  {service.title}
+                </h3>
+                <p className='leading-relaxed mb-4 text-slate-500'>
+                  {service.description}
+                </p>
+                {activeService === index && (
+                  <ul className='space-y-2 border-t pt-4'>
+                    {service.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className='flex items-center text-sm text-slate-500'>
+                        <CheckCircle className='w-4 h-4 mr-2 text-blue-600' />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* Why Choose Us */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20'>
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl lg:text-4xl font-bold text-gray-900 mb-4'>
-            Why Choose Tondon Holdings?
-          </h2>
-          <p className='text-xl text-gray-600'>
-            Your trusted partner in creating exceptional travel experiences
-          </p>
-        </div>
+          {/* Destinations Section */}
+          <div
+            className={`mt-20 transition-all duration-1000 ease-out transform ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+            }`}
+            style={{
+              transitionDelay: isVisible ? "0.4s" : "0s",
+            }}>
+            <div className='text-center mb-16'>
+              <h2 className='text-3xl font-bold mb-4 text-slate-800'>
+                Top Destinations
+              </h2>
+              <p className='text-xl text-slate-500'>
+                Explore our most loved travel experiences
+              </p>
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+              {destinations.map((dest, index) => (
+                <div
+                  key={index}
+                  className='group bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden border border-gray-100 hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-2'>
+                  {dest.image && (
+                    <div className='relative overflow-hidden'>
+                      <img
+                        src={dest.image}
+                        alt={dest.name}
+                        className='h-56 w-full object-cover group-hover:scale-105 transition-transform duration-500'
+                      />
+                      <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+                    </div>
+                  )}
+                  <div className='p-6'>
+                    <h3 className='text-xl font-bold text-slate-800 mb-2'>
+                      {dest.name}
+                    </h3>
+                    <p className='text-blue-600 font-semibold mb-2 text-lg'>
+                      {dest.price}
+                    </p>
+                    <p className='text-slate-500 text-sm mb-3'>
+                      Duration: {dest.duration}
+                    </p>
+                    <div className='flex items-center mb-4 text-yellow-500'>
+                      <Star className='w-4 h-4 fill-current' />
+                      <span className='ml-1 text-sm text-slate-600'>
+                        {dest.rating} ({dest.reviews} reviews)
+                      </span>
+                    </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
-          <div>
-            <img
-              src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-              alt='Professional Travel Team'
-              className='rounded-xl shadow-lg w-full h-80 object-cover'
-            />
+                    {/* CTA Buttons */}
+                    <div className='flex gap-3 mt-4'>
+                      <button className='flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 text-sm hover:shadow-md'>
+                        View Details
+                      </button>
+                      <button className='flex-1 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 text-sm hover:shadow-md'>
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className='space-y-6'>
-            <div className='flex items-start'>
-              <div className='bg-blue-100 p-2 rounded-lg mr-4 mt-1'>
-                <Award className='w-6 h-6 text-blue-600' />
-              </div>
-              <div>
-                <h3 className='text-lg font-semibold text-gray-900 mb-2'>
-                  15+ Years of Excellence
-                </h3>
-                <p className='text-gray-600'>
-                  Established travel company with proven track record of
-                  customer satisfaction.
-                </p>
+
+          {/* Stats Section */}
+          <div
+            className={`mt-20 transition-all duration-1000 ease-out transform ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+            }`}
+            style={{
+              transitionDelay: isVisible ? "0.6s" : "0s",
+            }}>
+            <div className='bg-white rounded-xl shadow-lg p-8 border border-gray-100'>
+              <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
+                {stats.map((stat, index) => (
+                  <div key={index} className='text-center'>
+                    <div className='text-3xl font-bold text-blue-600 mb-2'>
+                      {stat.number}
+                    </div>
+                    <div className='text-slate-500 text-sm font-medium'>
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className='flex items-start'>
-              <div className='bg-blue-100 p-2 rounded-lg mr-4 mt-1'>
-                <Users className='w-6 h-6 text-blue-600' />
-              </div>
-              <div>
-                <h3 className='text-lg font-semibold text-gray-900 mb-2'>
-                  Expert Travel Consultants
-                </h3>
-                <p className='text-gray-600'>
-                  Professional team with extensive knowledge of global
-                  destinations and travel requirements.
-                </p>
-              </div>
-            </div>
-            <div className='flex items-start'>
-              <div className='bg-blue-100 p-2 rounded-lg mr-4 mt-1'>
-                <Shield className='w-6 h-6 text-blue-600' />
-              </div>
-              <div>
-                <h3 className='text-lg font-semibold text-gray-900 mb-2'>
-                  Secure & Reliable
-                </h3>
-                <p className='text-gray-600'>
-                  Licensed travel agency with comprehensive insurance and secure
-                  booking systems.
-                </p>
-              </div>
-            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Contact CTA */}
-      <div className='bg-blue-600 py-16'>
-        <div className='max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8'>
-          <h2 className='text-3xl lg:text-4xl font-bold text-white mb-4'>
-            Ready to Plan Your Next Journey?
-          </h2>
-          <p className='text-xl text-blue-100 mb-8'>
-            Contact our travel experts today for personalized service and
-            competitive pricing.
-          </p>
-          <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-            <button className='bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors duration-300 flex items-center justify-center'>
-              <Phone className='mr-2 w-5 h-5' />
-              Call Now: +1-800-TRAVEL
-            </button>
-            <button className='border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300 flex items-center justify-center'>
-              <Mail className='mr-2 w-5 h-5' />
-              Get Free Quote
-            </button>
+          {/* Features Section */}
+          <div
+            className={
+              "mt-20 transition-all duration-1000 ease-out transform translate-y-0"
+            }
+            style={{
+              transitionDelay: isVisible ? "0.8s" : "0s",
+            }}>
+            <div className='text-center mb-16'>
+              <h2 className='text-3xl font-bold mb-4 text-slate-800'>
+                Why Choose Our Travel Services
+              </h2>
+              <p className='text-xl text-slate-500'>
+                Your trusted partner for unforgettable journeys
+              </p>
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+              {features.map((feature, index) => {
+                const IconComponent = feature.icon;
+                return (
+                  <div
+                    key={index}
+                    className='group bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-1'>
+                    <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors duration-300'>
+                      <IconComponent className='w-8 h-8 text-blue-600' />
+                    </div>
+                    <h3 className='text-xl font-bold mb-4 text-slate-800'>
+                      {feature.title}
+                    </h3>
+                    <p className='leading-relaxed text-slate-500'>
+                      {feature.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div
+            className={
+              "mt-20 transition-all duration-1000 ease-out transform translate-y-0"
+            }
+            style={{
+              transitionDelay: isVisible ? "1s" : "0s",
+            }}>
+            <div className='text-center mb-16'>
+              <h2 className='text-3xl font-bold mb-4 text-slate-800'>
+                Ready to Explore the World?
+              </h2>
+              <p className='text-xl text-slate-500'>
+                Let us help you plan your perfect getaway
+              </p>
+            </div>
+            <div className='flex justify-center'>
+              <button className='bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300'>
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
